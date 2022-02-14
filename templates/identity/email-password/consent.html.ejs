@@ -15,5 +15,9 @@
 </form>
 
 <script>
-  addPostListener('mainForm', 'error', '', () => { throw new Error('Expected a location field in the response.') });
+  addPostListener('mainForm', 'error', '', (json) => {
+    if (!json.location) {
+      throw new Error('Expected a location field in the response.');
+    }
+  });
 </script>

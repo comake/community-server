@@ -50,7 +50,11 @@
   setVisibility('authenticating', <%= Boolean(authenticating) %>);
   setVisibility('not-authenticating', <%= !Boolean(authenticating) %>);
 
-  addPostListener('mainForm', 'error', '', () => { throw new Error('Expected a location field in the response.') });
+  addPostListener('mainForm', 'error', '', (json) => {
+    if (!json.location) {
+      throw new Error('Expected a location field in the response.');
+    }
+  });
 
   addControlLinks('<%= idpIndex %>', { 'register-link': 'register', 'forgot-link': 'forgotPassword'});
 </script>
