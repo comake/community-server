@@ -31,8 +31,10 @@ export class LocationInteractionHandler extends InteractionHandler {
       return await this.source.handle(input);
     } catch (error: unknown) {
       if (RedirectHttpError.isInstance(error)) {
+        // TODO: document
         const body = JSON.stringify({ location: error.location });
-        return new BasicRepresentation(body, input.operation.target, APPLICATION_JSON);
+        const representation = new BasicRepresentation(body, input.operation.target, APPLICATION_JSON);
+        return representation;
       }
       throw error;
     }

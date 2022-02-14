@@ -4,7 +4,7 @@ import { getLoggerFor } from '../logging/LogUtil';
 import type { OperationHttpHandlerInput } from '../server/OperationHttpHandler';
 import { OperationHttpHandler } from '../server/OperationHttpHandler';
 import type { RepresentationConverter } from '../storage/conversion/RepresentationConverter';
-import { APPLICATION_JSON } from '../util/ContentTypes';
+import { APPLICATION_JSON, TEXT_HTML } from '../util/ContentTypes';
 import type { ProviderFactory } from './configuration/ProviderFactory';
 import type {
   InteractionHandler,
@@ -73,6 +73,10 @@ export class IdentityProviderHttpHandler extends OperationHttpHandler {
         ...operation,
         body: await this.converter.handleSafe(args),
       };
+    }
+
+    if (!operation.preferences.type || Object.keys(operation.preferences.type).length === 0) {
+      operation.preferences.type = { [TEXT_HTML]: 1 };
     }
 
     const representation = await this.handler.handleSafe({ operation, oidcInteraction });
