@@ -18,6 +18,7 @@ export interface CliParams {
   sparqlEndpoint?: string;
   showStackTrace?: boolean;
   podConfigJson?: string;
+  seededPodConfigJson?: string;
 }
 
 export class AppRunner {
@@ -82,6 +83,7 @@ export class AppRunner {
         showStackTrace: { type: 'boolean', alias: 't', default: false },
         sparqlEndpoint: { type: 'string', alias: 's', requiresArg: true },
         podConfigJson: { type: 'string', default: './pod-config.json', requiresArg: true },
+        seededPodConfigJson: { type: 'string', default: './seeded-pod-config.json', requiresArg: true },
       })
       .parseSync();
 
@@ -147,6 +149,7 @@ export class AppRunner {
       'urn:solid-server:default:variable:sparqlEndpoint': params.sparqlEndpoint,
       'urn:solid-server:default:variable:showStackTrace': params.showStackTrace,
       'urn:solid-server:default:variable:podConfigJson': resolveAssetPath(params.podConfigJson),
+      'urn:solid-server:default:variable:seededPodConfigJson': resolveAssetPath(params.seededPodConfigJson),
     };
   }
 }

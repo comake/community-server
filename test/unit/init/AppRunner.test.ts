@@ -46,6 +46,7 @@ describe('AppRunner', (): void => {
           rootFilePath: '/var/cwd/',
           showStackTrace: false,
           podConfigJson: '/var/cwd/pod-config.json',
+          seededPodConfigJson: '/var/cwd/seeded-pod-config.json',
         },
       );
 
@@ -70,6 +71,7 @@ describe('AppRunner', (): void => {
             'urn:solid-server:default:variable:loggingLevel': 'info',
             'urn:solid-server:default:variable:showStackTrace': false,
             'urn:solid-server:default:variable:podConfigJson': '/var/cwd/pod-config.json',
+            'urn:solid-server:default:variable:seededPodConfigJson': '/var/cwd/seeded-pod-config.json',
           },
         },
       );
@@ -110,6 +112,7 @@ describe('AppRunner', (): void => {
             'urn:solid-server:default:variable:loggingLevel': 'info',
             'urn:solid-server:default:variable:showStackTrace': false,
             'urn:solid-server:default:variable:podConfigJson': '/var/cwd/pod-config.json',
+            'urn:solid-server:default:variable:seededPodConfigJson': '/var/cwd/seeded-pod-config.json',
           },
         },
       );
@@ -130,6 +133,7 @@ describe('AppRunner', (): void => {
           '-s', 'http://localhost:5000/sparql',
           '-t',
           '--podConfigJson', '/different-path.json',
+          '--seededPodConfigJson', '/different-path.json',
         ],
       });
 
@@ -157,6 +161,7 @@ describe('AppRunner', (): void => {
             'urn:solid-server:default:variable:sparqlEndpoint': 'http://localhost:5000/sparql',
             'urn:solid-server:default:variable:showStackTrace': true,
             'urn:solid-server:default:variable:podConfigJson': '/different-path.json',
+            'urn:solid-server:default:variable:seededPodConfigJson': '/different-path.json',
           },
         },
       );
@@ -175,6 +180,7 @@ describe('AppRunner', (): void => {
           '--sparqlEndpoint', 'http://localhost:5000/sparql',
           '--showStackTrace',
           '--podConfigJson', '/different-path.json',
+          '--seededPodConfigJson', '/different-path.json',
         ],
       });
 
@@ -202,6 +208,7 @@ describe('AppRunner', (): void => {
             'urn:solid-server:default:variable:sparqlEndpoint': 'http://localhost:5000/sparql',
             'urn:solid-server:default:variable:showStackTrace': true,
             'urn:solid-server:default:variable:podConfigJson': '/different-path.json',
+            'urn:solid-server:default:variable:seededPodConfigJson': '/different-path.json',
           },
         },
       );
@@ -235,6 +242,7 @@ describe('AppRunner', (): void => {
         '-s', 'http://localhost:5000/sparql',
         '-t',
         '--podConfigJson', '/different-path.json',
+        '--seededPodConfigJson', '/different-path.json',
       ];
 
       new AppRunner().runCli();
@@ -263,6 +271,7 @@ describe('AppRunner', (): void => {
             'urn:solid-server:default:variable:sparqlEndpoint': 'http://localhost:5000/sparql',
             'urn:solid-server:default:variable:showStackTrace': true,
             'urn:solid-server:default:variable:podConfigJson': '/different-path.json',
+            'urn:solid-server:default:variable:seededPodConfigJson': '/different-path.json',
           },
         },
       );
