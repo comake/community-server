@@ -207,6 +207,7 @@ export * from './init/App';
 export * from './init/AppRunner';
 export * from './init/CliResolver';
 export * from './init/ConfigPodInitializer';
+export * from './init/SeededPodInitializer';
 export * from './init/ContainerInitializer';
 export * from './init/Initializer';
 export * from './init/LoggerInitializer';
