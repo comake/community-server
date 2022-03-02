@@ -16,7 +16,7 @@ jest.mock('oidc-provider', (): any => ({
 
 const routes = {
   authorization: '/foo/oidc/auth',
-  check_session: '/foo/oidc/session/check',
+  backchannel_authentication: '/foo/oidc/backchannel',
   code_verification: '/foo/oidc/device',
   device_authorization: '/foo/oidc/device/auth',
   end_session: '/foo/oidc/session/end',
@@ -100,27 +100,36 @@ describe('An IdentityProviderFactory', (): void => {
     expect(adapterFactory.createStorageAdapter).toHaveBeenLastCalledWith('test!');
 
     expect(config.cookies?.keys).toEqual([ expect.any(String) ]);
-    expect(config.jwks).toEqual({ keys: [ expect.objectContaining({ kty: 'RSA' }) ]});
+    expect(config.jwks).toEqual({ keys: [ expect.objectContaining({ alg: 'ES256' }) ]});
     expect(config.routes).toEqual(routes);
+    expect(config.pkce?.methods).toEqual([ 'S256' ]);
+    expect((config.pkce!.required as any)()).toBe(true);
+    expect(config.clientDefaults?.id_token_signed_response_alg).toBe('ES256');
 
     await expect((config.interactions?.url as any)(ctx, oidcInteraction)).resolves.toBe(redirectUrl);
-    expect((config.audiences as any)(null, null, {}, 'access_token')).toBe('solid');
-    expect((config.audiences as any)(null, null, { clientId: 'clientId' }, 'client_credentials')).toBe('clientId');
 
-    const findResult = await config.findAccount?.({ oidc: { client: { clientId: 'clientId' }}} as any, webId);
+    let findResult = await config.findAccount?.({ oidc: { client: { clientId: 'clientId' }}} as any, webId);
     expect(findResult?.accountId).toBe(webId);
+    await expect((findResult?.claims as any)()).resolves.toEqual({ sub: webId, webid: webId, azp: 'clientId' });
+    findResult = await config.findAccount?.({ oidc: {}} as any, webId);
     await expect((findResult?.claims as any)()).resolves.toEqual({ sub: webId, webid: webId });
 
-    expect((config.extraAccessTokenClaims as any)({}, {})).toEqual({});
-    expect((config.extraAccessTokenClaims as any)({}, { kind: 'AccessToken', accountId: webId, clientId: 'clientId' }))
-      .toEqual({
-        webid: webId,
-        client_id: 'clientId',
-      });
+    expect((config.extraTokenClaims as any)({}, {})).toEqual({});
+    expect((config.extraTokenClaims as any)({}, { kind: 'AccessToken', accountId: webId, clientId: 'clientId' }))
+      .toEqual({ webid: webId });
+
+    expect(config.features?.resourceIndicators?.enabled).toBe(true);
+    expect((config.features?.resourceIndicators?.defaultResource as any)()).toBe('http://example.com/');
+    expect((config.features?.resourceIndicators?.getResourceServerInfo as any)()).toEqual({
+      scope: '',
+      audience: 'solid',
+      accessTokenFormat: 'jwt',
+      jwt: { sign: { alg: 'ES256' }},
+    });
 
     // Test the renderError function
     const response = { } as HttpResponse;
-    await expect((config.renderError as any)({ res: response }, null, 'error!')).resolves.toBeUndefined();
+    await expect((config.renderError as any)({ res: response }, {}, 'error!')).resolves.toBeUndefined();
     expect(errorHandler.handleSafe).toHaveBeenCalledTimes(1);
     expect(errorHandler.handleSafe)
       .toHaveBeenLastCalledWith({ error: 'error!', preferences: { type: { 'text/plain': 1 }}});
@@ -181,5 +190,23 @@ describe('An IdentityProviderFactory', (): void => {
     expect(storage.set).toHaveBeenCalledTimes(2);
     expect(storage.set).toHaveBeenCalledWith('jwks', result1.config.jwks);
     expect(storage.set).toHaveBeenCalledWith('cookie-secret', result1.config.cookies?.keys);
+  });
+
+  it('updates errors if there is more information.', async(): Promise<void> => {
+    const provider = await factory.getProvider() as any;
+    const { config } = provider as { config: Configuration };
+    const response = { } as HttpResponse;
+
+    const error = new Error('bad data');
+    const out = { error_description: 'more info' };
+
+    await expect((config.renderError as any)({ res: response }, out, error)).resolves.toBeUndefined();
+    expect(errorHandler.handleSafe).toHaveBeenCalledTimes(1);
+    expect(errorHandler.handleSafe)
+      .toHaveBeenLastCalledWith({ error, preferences: { type: { 'text/plain': 1 }}});
+    expect(responseWriter.handleSafe).toHaveBeenCalledTimes(1);
+    expect(responseWriter.handleSafe).toHaveBeenLastCalledWith({ response, result: { statusCode: 500 }});
+    expect(error.message).toBe('bad data - more info');
+    expect(error.stack).toContain('Error: bad data - more info');
   });
 });

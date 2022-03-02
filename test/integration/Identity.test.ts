@@ -138,10 +138,11 @@ describe('A Solid server with IDP', (): void => {
     });
 
     it('initializes the session and logs in.', async(): Promise<void> => {
-      const url = await state.startSession();
+      let url = await state.startSession();
       const res = await state.fetchIdp(url);
       expect(res.status).toBe(200);
-      await state.login(url, email, password);
+      url = await state.login(url, email, password);
+      await state.consent(url);
       expect(state.session.info?.webId).toBe(webId);
     });
 
@@ -162,17 +163,102 @@ describe('A Solid server with IDP', (): void => {
     it('can log in again.', async(): Promise<void> => {
       const url = await state.startSession();
 
-      let res = await state.fetchIdp(url);
+      const res = await state.fetchIdp(url);
       expect(res.status).toBe(200);
 
       // Will receive confirm screen here instead of login screen
-      res = await state.fetchIdp(url, 'POST', '', APPLICATION_X_WWW_FORM_URLENCODED);
-      const json = await res.json();
-      const nextUrl = json.location;
-      expect(typeof nextUrl).toBe('string');
+      await state.consent(url);
 
-      await state.handleLoginRedirect(nextUrl);
       expect(state.session.info?.webId).toBe(webId);
+    });
+  });
+
+  describe('authenticating a client with a WebID', (): void => {
+    const clientId = joinUrl(baseUrl, 'client-id');
+    const badClientId = joinUrl(baseUrl, 'bad-client-id');
+    /* eslint-disable @typescript-eslint/naming-convention */
+    const clientJson = {
+      '@context': 'https://www.w3.org/ns/solid/oidc-context.jsonld',
+
+      client_id: clientId,
+      client_name: 'Solid Application Name',
+      redirect_uris: [ redirectUrl ],
+      post_logout_redirect_uris: [ 'https://app.example/logout' ],
+      client_uri: 'https://app.example/',
+      logo_uri: 'https://app.example/logo.png',
+      tos_uri: 'https://app.example/tos.html',
+      scope: 'openid profile offline_access webid',
+      grant_types: [ 'refresh_token', 'authorization_code' ],
+      response_types: [ 'code' ],
+      default_max_age: 3600,
+      require_auth_time: true,
+    };
+    // This client will always reject requests since there is no valid redirect
+    const badClientJson = {
+      ...clientJson,
+      client_id: badClientId,
+      redirect_uris: [],
+    };
+    /* eslint-enable @typescript-eslint/naming-convention */
+    let state: IdentityTestState;
+
+    beforeAll(async(): Promise<void> => {
+      state = new IdentityTestState(baseUrl, redirectUrl, oidcIssuer);
+
+      await fetch(clientId, {
+        method: 'PUT',
+        headers: { 'content-type': 'application/ld+json' },
+        body: JSON.stringify(clientJson),
+      });
+
+      await fetch(badClientId, {
+        method: 'PUT',
+        headers: { 'content-type': 'application/ld+json' },
+        body: JSON.stringify(badClientJson),
+      });
+    });
+
+    afterAll(async(): Promise<void> => {
+      await state.session.logout();
+    });
+
+    it('initializes the session and logs in.', async(): Promise<void> => {
+      let url = await state.startSession(clientId);
+      const res = await state.fetchIdp(url);
+      expect(res.status).toBe(200);
+      url = await state.login(url, email, password);
+
+      // Verify the client information the server discovered
+      const consentRes = await state.fetchIdp(url, 'GET');
+      expect(consentRes.status).toBe(200);
+      const { client } = await consentRes.json();
+      expect(client.client_id).toBe(clientJson.client_id);
+      expect(client.client_name).toBe(clientJson.client_name);
+
+      await state.consent(url);
+      expect(state.session.info?.webId).toBe(webId);
+    });
+
+    it('rejects requests in case the redirect URL is not accepted.', async(): Promise<void> => {
+      // This test allows us to make sure the server actually uses the client WebID.
+      // If it did not, it would not see the invalid redirect_url array.
+
+      let nextUrl = '';
+      await state.session.login({
+        redirectUrl,
+        oidcIssuer,
+        clientId: badClientId,
+        handleRedirect(data): void {
+          nextUrl = data;
+        },
+      });
+      expect(nextUrl.length > 0).toBeTruthy();
+      expect(nextUrl.startsWith(oidcIssuer)).toBeTruthy();
+
+      // Redirect will error due to invalid client WebID
+      const res = await state.fetchIdp(nextUrl);
+      expect(res.status).toBe(400);
+      await expect(res.text()).resolves.toContain('invalid_redirect_uri');
     });
   });
 
@@ -241,7 +327,8 @@ describe('A Solid server with IDP', (): void => {
     });
 
     it('can log in with the new password.', async(): Promise<void> => {
-      await state.login(nextUrl, email, password2);
+      const url = await state.login(nextUrl, email, password2);
+      await state.consent(url);
       expect(state.session.info?.webId).toBe(webId);
     });
   });
@@ -320,10 +407,11 @@ describe('A Solid server with IDP', (): void => {
 
     it('initializes the session and logs in.', async(): Promise<void> => {
       state = new IdentityTestState(baseUrl, redirectUrl, oidcIssuer);
-      const url = await state.startSession();
+      let url = await state.startSession();
       const res = await state.fetchIdp(url);
       expect(res.status).toBe(200);
-      await state.login(url, newMail, password);
+      url = await state.login(url, newMail, password);
+      await state.consent(url);
       expect(state.session.info?.webId).toBe(newWebId);
     });
 
