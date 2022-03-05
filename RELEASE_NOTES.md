@@ -12,13 +12,24 @@
   which enables passing custom variables to configurations and setting new default values.
 - The AppRunner functions have changed to require Components.js variables. 
   This is important for anyone who starts the server from code.
+- When logging in, a consent screen will now provide information about the client.
+
+### Data migration
+The following actions are required if you are upgrading from a v2 server and want to retain your data.
+
+Due to changes in the keys used by the IDP, you will need to delete the stored keys and sessions.
+If you are using a file backend, delete the `.internal/idp/` folder in your data folder and restart the server.
+This will not delete the user accounts, but users will have to log in again.
 
 ### Configuration changes
 You might need to make changes to your v2 configuration if you use a custom config.
 
+The `@context` needs to be updated to 
+`https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^3.0.0/components/context.jsonld`.
+
 The following changes pertain to the imports in the default configs:
 - A new configuration option needs to be imported:
-  - `/app/variables/default/json` contains everything related to parsing CLI arguments 
+  - `/app/variables/default.json` contains everything related to parsing CLI arguments 
     and assigning values to variables.
 
 The following changes are relevant for v2 custom configs that replaced certain features.

@@ -139,26 +139,22 @@ export * from './identity/interaction/email-password/storage/AccountStore';
 export * from './identity/interaction/email-password/storage/BaseAccountStore';
 
 // Identity/Interaction/Email-Password/Util
+export * from './identity/interaction/email-password/util/BaseEmailSender';
+export * from './identity/interaction/email-password/util/EmailSender';
 export * from './identity/interaction/email-password/util/RegistrationManager';
 
 // Identity/Interaction/Email-Password
 export * from './identity/interaction/email-password/EmailPasswordUtil';
 
 // Identity/Interaction/Routing
-export * from './identity/interaction/routing/BasicInteractionRoute';
+export * from './identity/interaction/routing/AbsolutePathInteractionRoute';
 export * from './identity/interaction/routing/InteractionRoute';
-export * from './identity/interaction/routing/RelativeInteractionRoute';
-
-// Identity/Interaction/Util
-export * from './identity/interaction/util/BaseEmailSender';
-export * from './identity/interaction/util/BaseInteractionCompleter';
-export * from './identity/interaction/util/EmailSender';
-export * from './identity/interaction/util/InteractionCompleter';
+export * from './identity/interaction/routing/InteractionRouteHandler';
+export * from './identity/interaction/routing/RelativePathInteractionRoute';
 
 // Identity/Interaction
 export * from './identity/interaction/BaseInteractionHandler';
-export * from './identity/interaction/CompletingInteractionHandler';
-export * from './identity/interaction/ExistingLoginHandler';
+export * from './identity/interaction/ConsentHandler';
 export * from './identity/interaction/ControlHandler';
 export * from './identity/interaction/FixedInteractionHandler';
 export * from './identity/interaction/HtmlViewHandler';
@@ -205,6 +201,7 @@ export * from './init/variables/SettingsResolver';
 // Init
 export * from './init/App';
 export * from './init/AppRunner';
+export * from './init/BaseUrlVerifier';
 export * from './init/CliResolver';
 export * from './init/ConfigPodInitializer';
 export * from './init/SeededPodInitializer';
@@ -212,6 +209,7 @@ export * from './init/ContainerInitializer';
 export * from './init/Initializer';
 export * from './init/LoggerInitializer';
 export * from './init/ServerInitializer';
+export * from './init/ModuleVersionVerifier';
 
 // Logging
 export * from './logging/LazyLogger';

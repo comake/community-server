@@ -1,7 +1,7 @@
 {
-  "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^2.0.0/components/context.jsonld",
+  "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^3.0.0/components/context.jsonld",
   "import": [
-    "files-scs:config/identity/handler/interaction/routes/existing-login.json",
+    "files-scs:config/identity/handler/interaction/routes/consent.json",
     "files-scs:config/identity/handler/interaction/routes/forgot-password.json",
     "files-scs:config/identity/handler/interaction/routes/index.json",
     "files-scs:config/identity/handler/interaction/routes/login.json",
@@ -27,14 +27,14 @@
       ]
     },
     {
-      "comment": "Converts redirect errors to location JSON responses.",
+      "comment": "Converts 3xx redirects to 200 JSON responses for consumption by browser scripts.",
       "@id": "urn:solid-server:auth:password:LocationInteractionHandler",
       "@type": "LocationInteractionHandler",
-      "LocationInteractionHandler:_source" : { "@id": "urn:solid-server:auth:password:RouteInteractionHandler" }
+      "LocationInteractionHandler:_source" : { "@id": "urn:solid-server:auth:password:InteractionRouteHandler" }
     },
     {
       "comment": "Handles every interaction based on their route.",
-      "@id": "urn:solid-server:auth:password:RouteInteractionHandler",
+      "@id": "urn:solid-server:auth:password:InteractionRouteHandler",
       "@type": "WaterfallHandler",
       "handlers": [
         {
@@ -44,12 +44,12 @@
           ],
           "@type": "UnsupportedAsyncHandler"
         },
-        { "@id": "urn:solid-server:auth:password:IndexRoute" },
-        { "@id": "urn:solid-server:auth:password:PromptRoute" },
-        { "@id": "urn:solid-server:auth:password:LoginRoute" },
-        { "@id": "urn:solid-server:auth:password:ExistingLoginRoute" },
-        { "@id": "urn:solid-server:auth:password:ForgotPasswordRoute" },
-        { "@id": "urn:solid-server:auth:password:ResetPasswordRoute" }
+        { "@id": "urn:solid-server:auth:password:IndexRouteHandler" },
+        { "@id": "urn:solid-server:auth:password:PromptRouteHandler" },
+        { "@id": "urn:solid-server:auth:password:LoginRouteHandler" },
+        { "@id": "urn:solid-server:auth:password:ConsentRouteHandler" },
+        { "@id": "urn:solid-server:auth:password:ForgotPasswordRouteHandler" },
+        { "@id": "urn:solid-server:auth:password:ResetPasswordRouteHandler" }
       ]
     }
   ]

@@ -74,11 +74,12 @@ export class IdentityTestState {
    * Initializes an authentication session and stores the relevant cookies for later re-use.
    * All te relevant links from the login page get extracted.
    */
-  public async startSession(): Promise<string> {
+  public async startSession(clientId?: string): Promise<string> {
     let nextUrl = '';
     await this.session.login({
       redirectUrl: this.redirectUrl,
       oidcIssuer: this.oidcIssuer,
+      clientId,
       handleRedirect(data): void {
         nextUrl = data;
       },
@@ -88,7 +89,7 @@ export class IdentityTestState {
 
     // Need to catch the redirect so we can copy the cookies
     let res = await this.fetchIdp(nextUrl);
-    expect(res.status).toBe(302);
+    expect(res.status).toBe(303);
     nextUrl = res.headers.get('location')!;
 
     // Handle redirect
@@ -108,22 +109,26 @@ export class IdentityTestState {
    * Logs in by sending the corresponding email and password to the given form action.
    * The URL should be extracted from the login page.
    */
-  public async login(url: string, email: string, password: string): Promise<void> {
+  public async login(url: string, email: string, password: string): Promise<string> {
     const formData = stringify({ email, password });
-    const res = await this.fetchIdp(url, 'POST', formData, APPLICATION_X_WWW_FORM_URLENCODED);
+    let res = await this.fetchIdp(url, 'POST', formData, APPLICATION_X_WWW_FORM_URLENCODED);
     expect(res.status).toBe(200);
     const json = await res.json();
-    const nextUrl = json.location;
-
-    return this.handleLoginRedirect(nextUrl);
+    res = await this.fetchIdp(json.location);
+    expect(res.status).toBe(303);
+    return res.headers.get('location')!;
   }
 
   /**
-   * Handles the redirect that happens after logging in.
+   * Handles the consent screen at the given URL and the followup redirect back to the client.
    */
-  public async handleLoginRedirect(url: string): Promise<void> {
-    const res = await this.fetchIdp(url);
-    expect(res.status).toBe(302);
+  public async consent(url: string): Promise<void> {
+    let res = await this.fetchIdp(url, 'POST', '', APPLICATION_X_WWW_FORM_URLENCODED);
+    expect(res.status).toBe(200);
+    const json = await res.json();
+
+    res = await this.fetchIdp(json.location);
+    expect(res.status).toBe(303);
     const mockUrl = res.headers.get('location')!;
     expect(mockUrl.startsWith(this.redirectUrl)).toBeTruthy();
 
