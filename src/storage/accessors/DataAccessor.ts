@@ -15,10 +15,10 @@ import type { Guarded } from '../../util/GuardedStream';
  */
 export interface DataAccessor {
   /**
-   * Should throw a NotImplementedHttpError if the DataAccessor does not support storing the given Representation.
+   * Should throw a UnsupportedMediaTypeHttpError if the DataAccessor does not support storing the given Representation.
    * @param representation - Incoming Representation.
    *
-   * @throws BadRequestHttpError
+   * @throws UnsupportedMediaTypeHttpError
    * If it does not support the incoming data.
    */
   canHandle: (representation: Representation) => Promise<void>;

@@ -53,6 +53,11 @@
           "type": "string",
           "describe": "URL of the SPARQL endpoint, when using a quadstore-based configuration."
         },
+        "dgraphConfig": {
+          "requiresArg": true,
+          "type": "string",
+          "describe": "Path to the file that is used to configure a dgraph database."
+        },
         "podConfigJson": {
           "requiresArg": true,
           "type": "string",

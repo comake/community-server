@@ -76,6 +76,7 @@
   ],
   "dependencies": {
     "@comunica/actor-init-sparql": "^1.22.3",
+    "@grpc/grpc-js": "^1.5.5",
     "@solid/access-token-verifier": "^1.1.3",
     "@types/arrayify-stream": "^1.0.0",
     "@types/async-lock": "^1.1.3",
@@ -105,6 +106,7 @@
     "componentsjs": "^4.5.0",
     "cors": "^2.8.5",
     "cross-fetch": "^3.1.5",
+    "dgraph-js": "^21.3.1",
     "ejs": "^3.1.6",
     "end-of-stream": "^1.4.4",
     "escape-string-regexp": "^4.0.0",
@@ -123,6 +125,7 @@
     "rdf-dereference": "^1.9.0",
     "rdf-parse": "^1.9.1",
     "rdf-serialize": "^1.2.0",
+    "rdf-string-ttl": "^1.2.0",
     "rdf-terms": "^1.7.1",
     "redis": "^3.1.2",
     "redlock": "^4.2.0",

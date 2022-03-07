@@ -44,6 +44,14 @@
           }
         },
         {
+          "CombinedSettingsResolver:_computers_key": "urn:solid-server:default:variable:dgraphConfig",
+          "CombinedSettingsResolver:_computers_value": {
+            "@type": "AssetPathExtractor",
+            "key": "dgraphConfig",
+            "defaultPath": "./dgraph-config.json"
+          }
+        },
+        {
           "CombinedSettingsResolver:_computers_key": "urn:solid-server:default:variable:showStackTrace",
           "CombinedSettingsResolver:_computers_value": {
             "@type": "KeyExtractor",
