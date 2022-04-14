@@ -11,7 +11,7 @@
       "comment": "Converts request metadata (e.g. headers) to RDF metadata.",
       "@id": "urn:solid-server:default:MetadataParser",
       "@type": "ParallelHandler",
-      "handlers": [
+      "ParallelHandler:_handlers": [
         { "@id": "urn:solid-server:default:ContentTypeParser" },
         { "@id": "urn:solid-server:default:ContentLengthParser" },
         { "@id": "urn:solid-server:default:SlugParser" },

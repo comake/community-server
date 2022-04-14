@@ -5,12 +5,12 @@
       "comment": "This is the entry point to the application. It can be used to both start and stop the server.",
       "@id": "urn:solid-server:default:App",
       "@type": "App",
-      "initializer": { "@id": "urn:solid-server:default:Initializer" },
-      "finalizer": {
+      "App:_initializer": { "@id": "urn:solid-server:default:Initializer" },
+      "App:_finalizer": {
         "comment": "This is going to contain the list of finalizers that need to be called. These should be added in the configs where such classes are configured.",
         "@id": "urn:solid-server:default:Finalizer",
         "@type": "ParallelFinalizer",
-        "finalizers": [
+        "ParallelFinalizer:_finalizers": [
           { "@id": "urn:solid-server:default:ServerInitializer" }
         ]
       }

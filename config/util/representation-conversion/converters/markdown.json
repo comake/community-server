@@ -5,21 +5,31 @@
       "comment": "Renders Markdown snippets into the main page template.",
       "@id": "urn:solid-server:default:MarkdownToHtmlConverter",
       "@type": "MarkdownToHtmlConverter",
-      "templateEngine": {
+      "MarkdownToHtmlConverter:_templateEngine": {
         "@type": "EjsTemplateEngine",
-        "template": "@css:templates/main.html.ejs"
+        "EjsTemplateEngine:_template": {
+          "@type": "@json",
+          "@value": {
+            "templateFile": "@css:templates/main.html.ejs"
+          }
+        }
       }
     },
     {
       "comment": "Converts a container into a Markdown listing of its contents.",
       "@id": "urn:solid-server:default:ContainerToTemplateConverter",
       "@type": "ContainerToTemplateConverter",
-      "templateEngine": {
+      "ContainerToTemplateConverter:_templateEngine": {
         "@type": "HandlebarsTemplateEngine",
-        "template": "@css:templates/container.md.hbs"
+        "HandlebarsTemplateEngine:_template": {
+          "@type": "@json",
+          "@value": {
+            "templateFile": "@css:templates/container.md.hbs"
+          }
+        }
       },
-      "contentType": "text/markdown",
-      "identifierStrategy": { "@id": "urn:solid-server:default:IdentifierStrategy" }
+      "ContainerToTemplateConverter:_contentType": "text/markdown",
+      "ContainerToTemplateConverter:_identifierStrategy": { "@id": "urn:solid-server:default:IdentifierStrategy" }
     }
   ]
 }

@@ -5,9 +5,9 @@
       "comment": "Logs a warning if the base URL changes.",
       "@id": "urn:solid-server:default:BaseUrlVerifier",
       "@type": "BaseUrlVerifier",
-      "baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
-      "storageKey": "current-base-url",
-      "storage": { "@id": "urn:solid-server:default:SetupStorage" }
+      "BaseUrlVerifier:_baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
+      "BaseUrlVerifier:_storageKey": "current-base-url",
+      "BaseUrlVerifier:_storage": { "@id": "urn:solid-server:default:SetupStorage" }
     }
   ]
 }

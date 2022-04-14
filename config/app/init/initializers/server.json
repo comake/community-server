@@ -5,8 +5,8 @@
       "comment": "Creates the server that starts listening for requests.",
       "@id": "urn:solid-server:default:ServerInitializer",
       "@type": "ServerInitializer",
-      "serverFactory": { "@id": "urn:solid-server:default:ServerFactory" },
-      "port": { "@id": "urn:solid-server:default:variable:port" }
+      "ServerInitializer:_serverFactory": { "@id": "urn:solid-server:default:ServerFactory" },
+      "ServerInitializer:_port": { "@id": "urn:solid-server:default:variable:port" }
     }
   ]
 }

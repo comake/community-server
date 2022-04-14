@@ -43,18 +43,18 @@
       "comment": "The key/cert values should be replaces with paths to the correct files. The 'options' block can be removed if not needed.",
       "@id": "urn:solid-server:default:ServerFactory",
       "@type": "WebSocketServerFactory",
-      "baseServerFactory": {
+      "WebSocketServerFactory:_baseServerFactory": {
         "@id": "urn:solid-server:default:HttpServerFactory",
         "@type": "BaseHttpServerFactory",
-        "handler": { "@id": "urn:solid-server:default:HttpHandler" },
-        "options_showStackTrace": { "@id": "urn:solid-server:default:variable:showStackTrace" },
-        "options_https": true,
-        "options_key": "/path/to/server.key",
-        "options_cert": "/path/to/server.cert"
+        "BaseHttpServerFactory:_handler": { "@id": "urn:solid-server:default:HttpHandler" },
+        "BaseHttpServerFactory:_options_showStackTrace": { "@id": "urn:solid-server:default:variable:showStackTrace" },
+        "BaseHttpServerFactory:_options_https": true,
+        "BaseHttpServerFactory:_options_key": "/path/to/server.key",
+        "BaseHttpServerFactory:_options_cert": "/path/to/server.cert"
       },
-      "webSocketHandler": {
+      "WebSocketServerFactory:_webSocketHandler": {
         "@type": "UnsecureWebSocketsProtocol",
-        "source": { "@id": "urn:solid-server:default:ResourceStore" }
+        "UnsecureWebSocketsProtocol:_source": { "@id": "urn:solid-server:default:ResourceStore" }
       }
     }
   ]

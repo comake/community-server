@@ -14,7 +14,7 @@
     {
       "@id": "urn:solid-server:default:InteractionHandler",
       "@type": "WaterfallHandler",
-      "handlers": [
+      "WaterfallHandler:_handlers": [
         {
           "comment": "Returns the relevant HTML pages for the interactions when needed",
           "@id": "urn:solid-server:auth:password:HtmlViewHandler"
@@ -36,7 +36,7 @@
       "comment": "Handles every interaction based on their route.",
       "@id": "urn:solid-server:auth:password:InteractionRouteHandler",
       "@type": "WaterfallHandler",
-      "handlers": [
+      "WaterfallHandler:_handlers": [
         {
           "comment": [
             "This handler is required to prevent Components.js issues with arrays.",

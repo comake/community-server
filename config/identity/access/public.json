@@ -6,7 +6,7 @@
       "@id": "urn:solid-server:default:IdentityProviderAuthorizingHandler",
       "AuthorizingHttpHandler:_args_permissionReader": {
         "@type": "AllStaticReader",
-        "allow": true
+        "AllStaticReader:_allow": true
       }
     }
   ]

@@ -5,7 +5,7 @@
       "comment": "Converts Quad objects to many RDF serialization.",
       "@id": "urn:solid-server:default:QuadToRdfConverter",
       "@type": "QuadToRdfConverter",
-      "options_outputPreferences": [
+      "QuadToRdfConverter:_options_outputPreferences": [
         {
           "QuadToRdfConverter:_options_outputPreferences_key": "text/turtle",
           "QuadToRdfConverter:_options_outputPreferences_value": 1

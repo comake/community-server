@@ -6,32 +6,32 @@
       "comment": "DataAccessor that writes data to the disk with atomicity in mind",
       "@id": "urn:solid-server:default:AtomicFileDataAccessor",
       "@type": "AtomicFileDataAccessor",
-      "resourceMapper": { "@id": "urn:solid-server:default:FileIdentifierMapper" },
-      "rootFilePath": { "@id": "urn:solid-server:default:variable:rootFilePath" },
-      "tempFilePath": "/.internal/tempFiles/"
+      "AtomicFileDataAccessor:_resourceMapper": { "@id": "urn:solid-server:default:FileIdentifierMapper" },
+      "AtomicFileDataAccessor:_rootFilePath": { "@id": "urn:solid-server:default:variable:rootFilePath" },
+      "AtomicFileDataAccessor:_tempFilePath": "/.internal/tempFiles/"
     },
 
     {
       "comment": "Calculates the space already taken up by a resource",
       "@id": "urn:solid-server:default:SizeReporter",
       "@type": "FileSizeReporter",
-      "fileIdentifierMapper": { "@id": "urn:solid-server:default:FileIdentifierMapper" },
-      "rootFilePath": { "@id": "urn:solid-server:default:variable:rootFilePath" }
+      "FileSizeReporter:_fileIdentifierMapper": { "@id": "urn:solid-server:default:FileIdentifierMapper" },
+      "FileSizeReporter:_rootFilePath": { "@id": "urn:solid-server:default:variable:rootFilePath" }
     },
 
     {
       "comment": "Validates the data being written to the server",
       "@id": "urn:solid-server:default:QuotaValidator",
       "@type": "QuotaValidator",
-      "strategy": { "@id": "urn:solid-server:default:QuotaStrategy" }
+      "QuotaValidator:_strategy": { "@id": "urn:solid-server:default:QuotaStrategy" }
     },
 
     {
       "comment": "Simple wrapper for another DataAccessor but adds validation",
       "@id": "urn:solid-server:default:FileDataAccessor",
       "@type": "ValidatingDataAccessor",
-      "accessor": { "@id": "urn:solid-server:default:AtomicFileDataAccessor" },
-      "validator": { "@id": "urn:solid-server:default:QuotaValidator" }
+      "ValidatingDataAccessor:_accessor": { "@id": "urn:solid-server:default:AtomicFileDataAccessor" },
+      "ValidatingDataAccessor:_validator": { "@id": "urn:solid-server:default:QuotaValidator" }
     }
   ]
 }

@@ -5,13 +5,13 @@
       "comment": "Supports DPoP and Bearer access tokens, or no credentials.",
       "@id": "urn:solid-server:default:CredentialsExtractor",
       "@type": "UnionCredentialsExtractor",
-      "extractors": [
+      "UnionCredentialsExtractor:_extractors": [
         {
           "@type": "WaterfallHandler",
-          "handlers": [
+          "WaterfallHandler:_handlers": [
             {
               "@type": "DPoPWebIdExtractor",
-              "originalUrlExtractor": {
+              "DPoPWebIdExtractor:_originalUrlExtractor": {
                 "@type": "OriginalUrlExtractor"
               }
             },

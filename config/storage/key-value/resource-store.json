@@ -11,57 +11,57 @@
       ],
       "@id": "urn:solid-server:default:LockStorage",
       "@type": "JsonResourceStorage",
-      "source": { "@id": "urn:solid-server:default:ResourceStore_Backend" },
-      "baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
-      "container": "/.internal/locks/"
+      "JsonResourceStorage:_source": { "@id": "urn:solid-server:default:ResourceStore_Backend" },
+      "JsonResourceStorage:_baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
+      "JsonResourceStorage:_container": "/.internal/locks/"
     },
     {
       "comment": "Storage used by the IDP adapter.",
       "@id": "urn:solid-server:default:IdpAdapterStorage",
       "@type": "JsonResourceStorage",
-      "source": { "@id": "urn:solid-server:default:ResourceStore" },
-      "baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
-      "container": "/.internal/idp/adapter/"
+      "JsonResourceStorage:_source": { "@id": "urn:solid-server:default:ResourceStore" },
+      "JsonResourceStorage:_baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
+      "JsonResourceStorage:_container": "/.internal/idp/adapter/"
     },
     {
       "comment": "Storage used for the IDP keys.",
       "@id": "urn:solid-server:default:IdpKeyStorage",
       "@type": "JsonResourceStorage",
-      "source": { "@id": "urn:solid-server:default:ResourceStore" },
-      "baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
-      "container": "/.internal/idp/keys/"
+      "JsonResourceStorage:_source": { "@id": "urn:solid-server:default:ResourceStore" },
+      "JsonResourceStorage:_baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
+      "JsonResourceStorage:_container": "/.internal/idp/keys/"
     },
     {
       "comment": "Storage used for IDP ownership tokens.",
       "@id": "urn:solid-server:default:IdpTokenStorage",
       "@type": "JsonResourceStorage",
-      "source": { "@id": "urn:solid-server:default:ResourceStore" },
-      "baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
-      "container": "/.internal/idp/tokens/"
+      "JsonResourceStorage:_source": { "@id": "urn:solid-server:default:ResourceStore" },
+      "JsonResourceStorage:_baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
+      "JsonResourceStorage:_container": "/.internal/idp/tokens/"
     },
     {
       "comment": "Storage used for account management.",
       "@id": "urn:solid-server:default:AccountStorage",
       "@type": "JsonResourceStorage",
-      "source": { "@id": "urn:solid-server:default:ResourceStore" },
-      "baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
-      "container": "/.internal/accounts/"
+      "JsonResourceStorage:_source": { "@id": "urn:solid-server:default:ResourceStore" },
+      "JsonResourceStorage:_baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
+      "JsonResourceStorage:_container": "/.internal/accounts/"
     },
     {
       "comment": "Storage used for ForgotPassword records",
       "@id": "urn:solid-server:default:ForgotPasswordStorage",
       "@type":"JsonResourceStorage",
-      "source": { "@id": "urn:solid-server:default:ResourceStore" },
-      "baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
-      "container": "/.internal/forgot-password/"
+      "JsonResourceStorage:_source": { "@id": "urn:solid-server:default:ResourceStore" },
+      "JsonResourceStorage:_baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
+      "JsonResourceStorage:_container": "/.internal/forgot-password/"
     },
     {
       "comment": "Storage used by setup components.",
       "@id": "urn:solid-server:default:SetupStorage",
       "@type": "JsonResourceStorage",
-      "source": { "@id": "urn:solid-server:default:ResourceStore" },
-      "baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
-      "container": "/.internal/setup/"
+      "JsonResourceStorage:_source": { "@id": "urn:solid-server:default:ResourceStore" },
+      "JsonResourceStorage:_baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
+      "JsonResourceStorage:_container": "/.internal/setup/"
     },
     {
       "comment": "Block external access to the storage containers to avoid exposing internal data.",
@@ -71,7 +71,7 @@
           "PathBasedReader:_paths_key": "^/.internal(/.*)?$",
           "PathBasedReader:_paths_value": {
             "@type": "AllStaticReader",
-            "allow": false
+            "AllStaticReader:_allow": false
           }
         }
       ]
@@ -82,9 +82,9 @@
       "RoutingAuxiliaryStrategy:_sources": [
         {
           "@type": "ComposedAuxiliaryStrategy",
-          "identifierStrategy": {
+          "ComposedAuxiliaryStrategy:_identifierStrategy": {
             "@type": "SuffixAuxiliaryIdentifierStrategy",
-            "suffix": "/.internal/"
+            "SuffixAuxiliaryIdentifierStrategy:_suffix": "/.internal/"
           }
         }
       ]

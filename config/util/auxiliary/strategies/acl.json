@@ -5,23 +5,23 @@
       "comment": "Contains all features of acl auxiliary resources (suffix, link header, etc.).",
       "@id": "urn:solid-server:default:AclStrategy",
       "@type": "ComposedAuxiliaryStrategy",
-      "identifierStrategy": { "@id": "urn:solid-server:default:AclIdentifierStrategy" },
-      "metadataGenerator": {
+      "ComposedAuxiliaryStrategy:_identifierStrategy": { "@id": "urn:solid-server:default:AclIdentifierStrategy" },
+      "ComposedAuxiliaryStrategy:_metadataGenerator": {
         "@type": "LinkMetadataGenerator",
-        "link": "http://www.w3.org/ns/auth/acl#accessControl",
-        "identifierStrategy": { "@id": "urn:solid-server:default:AclIdentifierStrategy" }
+        "LinkMetadataGenerator:_link": "http://www.w3.org/ns/auth/acl#accessControl",
+        "LinkMetadataGenerator:_identifierStrategy": { "@id": "urn:solid-server:default:AclIdentifierStrategy" }
       },
-      "validator": {
+      "ComposedAuxiliaryStrategy:_validator": {
         "@type": "RdfValidator",
-        "converter": { "@id": "urn:solid-server:default:RepresentationConverter" }
+        "RdfValidator:_converter": { "@id": "urn:solid-server:default:RepresentationConverter" }
       },
-      "ownAuthorization": true,
-      "requiredInRoot": true
+      "ComposedAuxiliaryStrategy:_ownAuthorization": true,
+      "ComposedAuxiliaryStrategy:_requiredInRoot": true
     },
     {
       "@id": "urn:solid-server:default:AclIdentifierStrategy",
       "@type": "SuffixAuxiliaryIdentifierStrategy",
-      "suffix": ".acl"
+      "SuffixAuxiliaryIdentifierStrategy:_suffix": ".acl"
     }
   ]
 }

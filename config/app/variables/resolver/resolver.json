@@ -5,7 +5,7 @@
       "comment": "Converts an input key/value object into an object mapping values to Components.js variables",
       "@id": "urn:solid-server-app-setup:default:SettingsResolver",
       "@type": "CombinedSettingsResolver",
-      "computers": [
+      "CombinedSettingsResolver:_computers": [
         {
           "CombinedSettingsResolver:_computers_key": "urn:solid-server:default:variable:baseUrl",
           "CombinedSettingsResolver:_computers_value": {
@@ -16,54 +16,54 @@
           "CombinedSettingsResolver:_computers_key": "urn:solid-server:default:variable:loggingLevel",
           "CombinedSettingsResolver:_computers_value": {
             "@type": "KeyExtractor",
-            "key": "loggingLevel",
-            "defaultValue": "info"
+            "KeyExtractor:_key": "loggingLevel",
+            "KeyExtractor:_defaultValue": "info"
           }
         },
         {
           "CombinedSettingsResolver:_computers_key": "urn:solid-server:default:variable:port",
           "CombinedSettingsResolver:_computers_value": {
             "@type": "KeyExtractor",
-            "key": "port",
-            "defaultValue": 3000
+            "KeyExtractor:_key": "port",
+            "KeyExtractor:_defaultValue": 3000
           }
         },
         {
           "CombinedSettingsResolver:_computers_key": "urn:solid-server:default:variable:rootFilePath",
           "CombinedSettingsResolver:_computers_value": {
             "@type": "AssetPathExtractor",
-            "key": "rootFilePath",
-            "defaultPath": "./"
+            "AssetPathExtractor:_key": "rootFilePath",
+            "AssetPathExtractor:_defaultPath": "./"
           }
         },
         {
           "CombinedSettingsResolver:_computers_key": "urn:solid-server:default:variable:sparqlEndpoint",
           "CombinedSettingsResolver:_computers_value": {
             "@type": "KeyExtractor",
-            "key": "sparqlEndpoint"
+            "KeyExtractor:_key": "sparqlEndpoint"
           }
         },
         {
           "CombinedSettingsResolver:_computers_key": "urn:solid-server:default:variable:showStackTrace",
           "CombinedSettingsResolver:_computers_value": {
             "@type": "KeyExtractor",
-            "key": "showStackTrace",
-            "defaultValue": false
+            "KeyExtractor:_key": "showStackTrace",
+            "KeyExtractor:_defaultValue": false
           }
         },
         {
           "CombinedSettingsResolver:_computers_key": "urn:solid-server:default:variable:podConfigJson",
           "CombinedSettingsResolver:_computers_value": {
             "@type": "AssetPathExtractor",
-            "key": "podConfigJson",
-            "defaultPath": "./pod-config.json"
+            "AssetPathExtractor:_key": "podConfigJson",
+            "AssetPathExtractor:_defaultPath": "./pod-config.json"
           }
         },
         {
           "CombinedSettingsResolver:_computers_key": "urn:solid-server:default:variable:seededPodConfigJson",
           "CombinedSettingsResolver:_computers_value": {
             "@type": "AssetPathExtractor",
-            "key": "seededPodConfigJson"
+            "AssetPathExtractor:_key": "seededPodConfigJson"
           }
         }
       ]

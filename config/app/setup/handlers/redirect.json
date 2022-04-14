@@ -5,10 +5,10 @@
       "comment": "Redirects all request to the setup.",
       "@id": "urn:solid-server:default:SetupRedirectHandler",
       "@type": "RedirectAllHttpHandler",
-      "args_baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
-      "args_target": "/setup",
-      "args_targetExtractor": { "@id": "urn:solid-server:default:TargetExtractor" },
-      "args_responseWriter": { "@id": "urn:solid-server:default:ResponseWriter" }
+      "RedirectAllHttpHandler:_args_baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
+      "RedirectAllHttpHandler:_args_target": "/setup",
+      "RedirectAllHttpHandler:_args_targetExtractor": { "@id": "urn:solid-server:default:TargetExtractor" },
+      "RedirectAllHttpHandler:_args_responseWriter": { "@id": "urn:solid-server:default:ResponseWriter" }
     },
   ]
 }

@@ -4,34 +4,34 @@
     {
       "@id": "urn:solid-server:default:OperationHandler",
       "@type": "WaterfallHandler",
-      "handlers": [
+      "WaterfallHandler:_handlers": [
         {
           "@type": "GetOperationHandler",
-          "store": { "@id": "urn:solid-server:default:ResourceStore" },
+          "GetOperationHandler:_store": { "@id": "urn:solid-server:default:ResourceStore" },
         },
         {
           "@type": "PostOperationHandler",
-          "store": { "@id": "urn:solid-server:default:ResourceStore"  }
+          "PostOperationHandler:_store": { "@id": "urn:solid-server:default:ResourceStore"  }
         },
         {
           "@type": "PutOperationHandler",
-          "store": { "@id": "urn:solid-server:default:ResourceStore" }
+          "PutOperationHandler:_store": { "@id": "urn:solid-server:default:ResourceStore" }
         },
         {
           "@type": "DeleteOperationHandler",
-          "store": { "@id": "urn:solid-server:default:ResourceStore" }
+          "DeleteOperationHandler:_store": { "@id": "urn:solid-server:default:ResourceStore" }
         },
         {
           "@type": "HeadOperationHandler",
-          "store": { "@id": "urn:solid-server:default:ResourceStore" },
+          "HeadOperationHandler:_store": { "@id": "urn:solid-server:default:ResourceStore" },
         },
         {
           "@type": "PatchOperationHandler",
-          "store": { "@id": "urn:solid-server:default:ResourceStore" }
+          "PatchOperationHandler:_store": { "@id": "urn:solid-server:default:ResourceStore" }
         },
         {
           "@type": "StaticThrowHandler",
-          "error": { "@type": "MethodNotAllowedHttpError" }
+          "StaticThrowHandler:_error": { "@type": "MethodNotAllowedHttpError" }
         }
       ]
     }

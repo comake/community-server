@@ -5,16 +5,16 @@
       "comment": "Handles the interaction that occurs when a logged in user wants to authenticate with a new app.",
       "@id": "urn:solid-server:auth:password:ConsentRouteHandler",
       "@type":"InteractionRouteHandler",
-      "route": {
+      "InteractionRouteHandler:_route": {
         "@id": "urn:solid-server:auth:password:ConsentRoute",
         "@type": "RelativePathInteractionRoute",
-        "base": { "@id": "urn:solid-server:auth:password:IndexRoute" },
-        "relativePath": "/consent/"
+        "RelativePathInteractionRoute:_base": { "@id": "urn:solid-server:auth:password:IndexRoute" },
+        "RelativePathInteractionRoute:_relativePath": "/consent/"
       },
-      "source": {
+      "InteractionRouteHandler:_source": {
         "@id": "urn:solid-server:auth:password:ConsentHandler",
         "@type": "ConsentHandler",
-        "providerFactory": { "@id": "urn:solid-server:default:IdentityProviderFactory" }
+        "ConsentHandler:_providerFactory": { "@id": "urn:solid-server:default:IdentityProviderFactory" }
       }
     }
   ]

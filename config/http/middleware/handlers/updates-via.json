@@ -5,7 +5,7 @@
       "comment": "Advertises the websocket connection.",
       "@id": "urn:solid-server:default:Middleware_WebSocket",
       "@type": "WebSocketAdvertiser",
-      "baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" }
+      "WebSocketAdvertiser:_baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" }
     }
   ]
 }

@@ -5,7 +5,7 @@
       "comment": "Writes the result to the response stream.",
       "@id": "urn:solid-server:default:ResponseWriter",
       "@type": "BasicResponseWriter",
-      "metadataWriter": { "@id": "urn:solid-server:default:MetadataWriter" }
+      "BasicResponseWriter:_metadataWriter": { "@id": "urn:solid-server:default:MetadataWriter" }
     }
   ]
 }

@@ -5,23 +5,23 @@
       "comment": "Handles the register interaction",
       "@id": "urn:solid-server:auth:password:RegistrationRouteHandler",
       "@type": "InteractionRouteHandler",
-      "route": {
+      "InteractionRouteHandler:_route": {
         "@id": "urn:solid-server:auth:password:RegistrationRoute",
         "@type": "RelativePathInteractionRoute",
-        "base": { "@id": "urn:solid-server:auth:password:IndexRoute" },
-        "relativePath": "/register/"
+        "RelativePathInteractionRoute:_base": { "@id": "urn:solid-server:auth:password:IndexRoute" },
+        "RelativePathInteractionRoute:_relativePath": "/register/"
       },
-      "source": {
+      "InteractionRouteHandler:_source": {
         "@id": "urn:solid-server:auth:password:RegistrationHandler",
         "@type": "RegistrationHandler",
-        "registrationManager": {
+        "RegistrationHandler:_registrationManager": {
           "@type": "RegistrationManager",
-          "args_baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
-          "args_webIdSuffix": "/profile/card#me",
-          "args_identifierGenerator": { "@id": "urn:solid-server:default:IdentifierGenerator" },
-          "args_ownershipValidator": { "@id": "urn:solid-server:auth:password:OwnershipValidator" },
-          "args_accountStore": { "@id": "urn:solid-server:auth:password:AccountStore" },
-          "args_podManager": { "@id": "urn:solid-server:default:PodManager" }
+          "RegistrationManager:_args_baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
+          "RegistrationManager:_args_webIdSuffix": "/profile/card#me",
+          "RegistrationManager:_args_identifierGenerator": { "@id": "urn:solid-server:default:IdentifierGenerator" },
+          "RegistrationManager:_args_ownershipValidator": { "@id": "urn:solid-server:auth:password:OwnershipValidator" },
+          "RegistrationManager:_args_accountStore": { "@id": "urn:solid-server:auth:password:AccountStore" },
+          "RegistrationManager:_args_podManager": { "@id": "urn:solid-server:default:PodManager" }
         }
       }
     }

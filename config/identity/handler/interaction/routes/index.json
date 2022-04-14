@@ -5,16 +5,19 @@
       "comment": "Root API entry. Returns an empty body so we can add controls pointing to other interaction routes.",
       "@id": "urn:solid-server:auth:password:IndexRouteHandler",
       "@type": "InteractionRouteHandler",
-      "route": {
+      "InteractionRouteHandler:_route": {
         "@id": "urn:solid-server:auth:password:IndexRoute",
         "@type": "RelativePathInteractionRoute",
-        "base": { "@id": "urn:solid-server:default:variable:baseUrl" },
-        "relativePath": "/idp/"
+        "RelativePathInteractionRoute:_base": { "@id": "urn:solid-server:default:variable:baseUrl" },
+        "RelativePathInteractionRoute:_relativePath": "/idp/"
       },
-      "source": {
+      "InteractionRouteHandler:_source": {
         "@id": "urn:solid-server:auth:password:IndexHandler",
         "@type": "FixedInteractionHandler",
-        "response": {}
+        "FixedInteractionHandler:_response": {
+          "@type": "@json",
+          "@value": {}
+        }
       }
     }
   ]

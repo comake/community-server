@@ -5,15 +5,15 @@
       "comment": "Creates a server that supports both websocket and HTTP requests.",
       "@id": "urn:solid-server:default:ServerFactory",
       "@type": "WebSocketServerFactory",
-      "baseServerFactory": {
+      "WebSocketServerFactory:_baseServerFactory": {
         "@id": "urn:solid-server:default:HttpServerFactory",
         "@type": "BaseHttpServerFactory",
-        "handler": { "@id": "urn:solid-server:default:HttpHandler" },
-        "options_showStackTrace": { "@id": "urn:solid-server:default:variable:showStackTrace" }
+        "BaseHttpServerFactory:_handler": { "@id": "urn:solid-server:default:HttpHandler" },
+        "BaseHttpServerFactory:_options_showStackTrace": { "@id": "urn:solid-server:default:variable:showStackTrace" }
       },
-      "webSocketHandler": {
+      "WebSocketServerFactory:_webSocketHandler": {
         "@type": "UnsecureWebSocketsProtocol",
-        "source": { "@id": "urn:solid-server:default:ResourceStore" }
+        "UnsecureWebSocketsProtocol:_source": { "@id": "urn:solid-server:default:ResourceStore" }
       }
     }
   ]

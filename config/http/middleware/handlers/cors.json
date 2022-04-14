@@ -5,7 +5,7 @@
       "comment": "Adds all the necessary CORS headers.",
       "@id": "urn:solid-server:default:Middleware_Cors",
       "@type": "CorsHandler",
-      "options_methods": [
+      "CorsHandler:_options_methods": [
         "GET",
         "HEAD",
         "OPTIONS",
@@ -14,8 +14,8 @@
         "PATCH",
         "DELETE"
       ],
-      "options_credentials": true,
-      "options_exposedHeaders": [
+      "CorsHandler:_options_credentials": true,
+      "CorsHandler:_options_exposedHeaders": [
         "Accept-Patch",
         "ETag",
         "Last-Modified",

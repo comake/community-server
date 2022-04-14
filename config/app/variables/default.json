@@ -5,12 +5,12 @@
         "files-scs:config/app/variables/resolver/resolver.json"
     ],
     "@graph": [
-        {
-            "comment": "Combines a CliExtractor and SettingsResolver to be used by the AppRunner.",
-            "@id": "urn:solid-server-app-setup:default:CliResolver",
-            "@type": "CliResolver",
-            "cliExtractor": { "@id": "urn:solid-server-app-setup:default:CliExtractor" },
-            "settingsResolver": { "@id": "urn:solid-server-app-setup:default:SettingsResolver" }
-        }
+      {
+        "comment": "Combines a CliExtractor and SettingsResolver to be used by the AppRunner.",
+        "@id": "urn:solid-server-app-setup:default:CliResolver",
+        "@type": "CliResolver",
+        "CliResolver:_cliExtractor": { "@id": "urn:solid-server-app-setup:default:CliExtractor" },
+        "CliResolver:_settingsResolver": { "@id": "urn:solid-server-app-setup:default:SettingsResolver" }
+      }
     ]
 }

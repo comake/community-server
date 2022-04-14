@@ -8,7 +8,7 @@
       ],
       "@id": "urn:solid-server:default:AuxiliaryStrategy",
       "@type": "RoutingAuxiliaryStrategy",
-      "sources": [ ]
+      "RoutingAuxiliaryStrategy:_sources": [ ]
     }
   ]
 }

@@ -9,18 +9,12 @@
     {
       "@id": "urn:solid-server:default:WebAclReader",
       "@type": "WebAclReader",
-      "aclStrategy": {
-        "@id": "urn:solid-server:default:AclStrategy"
-      },
-      "aclStore": {
-        "@id": "urn:solid-server:default:ResourceStore"
-      },
-      "identifierStrategy": {
-        "@id": "urn:solid-server:default:IdentifierStrategy"
-      },
-      "accessChecker": {
+      "WebAclReader:_aclStrategy": { "@id": "urn:solid-server:default:AclStrategy" },
+      "WebAclReader:_aclStore": { "@id": "urn:solid-server:default:ResourceStore" },
+      "WebAclReader:_identifierStrategy": { "@id": "urn:solid-server:default:IdentifierStrategy" },
+      "WebAclReader:_accessChecker": {
         "@type": "BooleanHandler",
-        "handlers": [
+        "BooleanHandler:_handlers": [
           { "@id": "urn:solid-server:default:AgentAccessChecker" },
           { "@id": "urn:solid-server:default:AgentClassAccessChecker" },
           { "@id": "urn:solid-server:default:AgentGroupAccessChecker" }

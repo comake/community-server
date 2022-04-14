@@ -10,12 +10,12 @@
       "comment": "All of these will always be executed on any incoming request. These are mostly used for adding response headers.",
       "@id": "urn:solid-server:default:Middleware",
       "@type": "SequenceHandler",
-      "handlers": [
+      "SequenceHandler:_handlers": [
         {
           "comment": "These handlers can be executed in any order.",
           "@id": "urn:solid-server:default:ParallelMiddleware",
           "@type": "ParallelHandler",
-          "handlers": [
+          "ParallelHandler:_handlers": [
             { "@id": "urn:solid-server:default:Middleware_Header" },
             { "@id": "urn:solid-server:default:Middleware_WebSocket" }
           ]

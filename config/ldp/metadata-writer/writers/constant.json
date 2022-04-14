@@ -5,7 +5,7 @@
       "comment": "Adds fixed headers to the response.",
       "@id": "urn:solid-server:default:MetadataWriter_Constant",
       "@type": "ConstantMetadataWriter",
-      "headers": [
+      "ConstantMetadataWriter:_headers": [
         {
           "ConstantMetadataWriter:_headers_key": "Accept-Patch",
           "ConstantMetadataWriter:_headers_value": "application/sparql-update, text/n3"

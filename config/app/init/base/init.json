@@ -12,7 +12,7 @@
       "comment": "These initializers will be all be executed sequentially when starting the server.",
       "@id": "urn:solid-server:default:Initializer",
       "@type": "SequenceHandler",
-      "handlers": [
+      "SequenceHandler:_handlers": [
         { "@id": "urn:solid-server:default:LoggerInitializer" },
         { "@id": "urn:solid-server:default:BaseUrlVerifier" },
         { "@id": "urn:solid-server:default:ParallelInitializer" },

@@ -5,13 +5,13 @@
       "comment": "Routes all OIDC related requests to the OIDC library.",
       "@id": "urn:solid-server:default:OidcHandler",
       "@type": "RouterHandler",
-      "args_baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
-      "args_targetExtractor": { "@id": "urn:solid-server:default:TargetExtractor" },
-      "args_allowedMethods": [ "*" ],
-      "args_allowedPathNames": [ "^/.oidc/.*", "^/\\.well-known/openid-configuration" ],
-      "args_handler": {
+      "RouterHandler:_args_baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
+      "RouterHandler:_args_targetExtractor": { "@id": "urn:solid-server:default:TargetExtractor" },
+      "RouterHandler:_args_allowedMethods": [ "*" ],
+      "RouterHandler:_args_allowedPathNames": [ "^/.oidc/.*", "^/\\.well-known/openid-configuration" ],
+      "RouterHandler:_args_handler": {
         "@type": "OidcHttpHandler",
-        "providerFactory": { "@id": "urn:solid-server:default:IdentityProviderFactory" }
+        "OidcHttpHandler:_providerFactory": { "@id": "urn:solid-server:default:IdentityProviderFactory" }
       }
     }
   ]

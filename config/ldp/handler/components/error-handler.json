@@ -5,10 +5,10 @@
       "comment": "Wraps around the main error handler as a fallback in case something goes wrong.",
       "@id": "urn:solid-server:default:ErrorHandler",
       "@type": "SafeErrorHandler",
-      "showStackTrace": { "@id": "urn:solid-server:default:variable:showStackTrace" },
-      "errorHandler": {
+      "SafeErrorHandler:_showStackTrace": { "@id": "urn:solid-server:default:variable:showStackTrace" },
+      "SafeErrorHandler:_errorHandler": {
         "@type": "WaterfallHandler",
-        "handlers": [
+        "WaterfallHandler:_handlers": [
           {
             "comment": "Internally redirects are created by throwing a specific error, this handler converts them to the correct response.",
             "@type": "RedirectingErrorHandler"
@@ -16,8 +16,8 @@
           {
             "comment": "Converts an Error object into a representation for an HTTP response.",
             "@type": "ConvertingErrorHandler",
-            "converter": { "@id": "urn:solid-server:default:UiEnabledConverter" },
-            "showStackTrace": { "@id": "urn:solid-server:default:variable:showStackTrace" }
+            "ConvertingErrorHandler:_converter": { "@id": "urn:solid-server:default:UiEnabledConverter" },
+            "ConvertingErrorHandler:_showStackTrace": { "@id": "urn:solid-server:default:variable:showStackTrace" }
           }
         ]
       }

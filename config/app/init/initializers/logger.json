@@ -8,9 +8,7 @@
       ],
       "@id": "urn:solid-server:default:LoggerInitializer",
       "@type": "LoggerInitializer",
-      "loggerFactory": {
-        "@id": "urn:solid-server:default:LoggerFactory"
-      }
+      "LoggerInitializer:_loggerFactory": { "@id": "urn:solid-server:default:LoggerFactory" }
     }
   ]
 }

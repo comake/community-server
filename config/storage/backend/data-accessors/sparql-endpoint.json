@@ -5,8 +5,8 @@
       "comment": "Stores data on a SPARQL endpoint. Only supports quad object streams.",
       "@id": "urn:solid-server:default:SparqlDataAccessor",
       "@type": "SparqlDataAccessor",
-      "endpoint": { "@id": "urn:solid-server:default:variable:sparqlEndpoint" },
-      "identifierStrategy": { "@id": "urn:solid-server:default:IdentifierStrategy" }
+      "SparqlDataAccessor:_endpoint": { "@id": "urn:solid-server:default:variable:sparqlEndpoint" },
+      "SparqlDataAccessor:_identifierStrategy": { "@id": "urn:solid-server:default:IdentifierStrategy" }
     }
   ]
 }

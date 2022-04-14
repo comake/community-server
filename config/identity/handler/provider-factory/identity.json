@@ -1,5 +1,8 @@
 {
-  "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^3.0.0/components/context.jsonld",
+  "@context": [
+    "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^3.0.0/components/context.jsonld",
+    { "config": { "@id": "IdentityProviderFactory:_config", "@type": "@json" } }
+  ],
   "@graph": [
     {
       "comment": [
@@ -8,20 +11,23 @@
       ],
       "@id": "urn:solid-server:default:IdentityProviderFactory",
       "@type": "IdentityProviderFactory",
-      "args_adapterFactory": { "@id": "urn:solid-server:default:IdpAdapterFactory" },
-      "args_baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
-      "args_oidcPath": "/.oidc",
-      "args_interactionHandler": { "@id": "urn:solid-server:auth:password:PromptHandler" },
-      "args_storage": { "@id": "urn:solid-server:default:IdpKeyStorage" },
-      "args_errorHandler": { "@id": "urn:solid-server:default:ErrorHandler" },
-      "args_responseWriter": { "@id": "urn:solid-server:default:ResponseWriter" },
+      "IdentityProviderFactory:_args_adapterFactory": { "@id": "urn:solid-server:default:IdpAdapterFactory" },
+      "IdentityProviderFactory:_args_baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
+      "IdentityProviderFactory:_args_oidcPath": "/.oidc",
+      "IdentityProviderFactory:_args_interactionHandler": { "@id": "urn:solid-server:auth:password:PromptHandler" },
+      "IdentityProviderFactory:_args_storage": { "@id": "urn:solid-server:default:IdpKeyStorage" },
+      "IdentityProviderFactory:_args_errorHandler": { "@id": "urn:solid-server:default:ErrorHandler" },
+      "IdentityProviderFactory:_args_responseWriter": { "@id": "urn:solid-server:default:ResponseWriter" },
       "config": {
         "claims": {
           "openid": [ "azp" ],
           "webid": [ "webid" ]
         },
         "cookies": {
-          "long": { "signed": true, "maxAge": 86400000 },
+          "long": {
+            "signed": true,
+            "maxAge": 86400000
+          },
           "short": { "signed": true }
         },
         "features": {

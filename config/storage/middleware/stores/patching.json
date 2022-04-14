@@ -5,27 +5,27 @@
       "comment": "Allows for PATCH operations on stores that don't have native support.",
       "@id": "urn:solid-server:default:ResourceStore_Patching",
       "@type": "PatchingStore",
-      "patchHandler": {
+      "PatchingStore:_patchHandler": {
         "@id": "urn:solid-server:default:PatchHandler",
         "@type": "RepresentationPatchHandler",
-        "patcher": {
+        "RepresentationPatchHandler:_patcher": {
           "@type": "WaterfallHandler",
-          "handlers": [
+          "WaterfallHandler:_handlers": [
             {
               "comment": "Makes sure PATCH operations on containers target the metadata.",
               "@type": "ContainerPatcher",
-              "patcher": { "@id": "urn:solid-server:default:PatchHandler_RDF" }
+              "ContainerPatcher:_patcher": { "@id": "urn:solid-server:default:PatchHandler_RDF" }
             },
             {
               "@type": "ConvertingPatcher",
-              "patcher": { "@id": "urn:solid-server:default:PatchHandler_RDF" },
-              "converter": { "@id": "urn:solid-server:default:RepresentationConverter" },
-              "intermediateType": "internal/quads",
-              "defaultType": "text/turtle"
+              "ConvertingPatcher:_patcher": { "@id": "urn:solid-server:default:PatchHandler_RDF" },
+              "ConvertingPatcher:_converter": { "@id": "urn:solid-server:default:RepresentationConverter" },
+              "ConvertingPatcher:_intermediateType": "internal/quads",
+              "ConvertingPatcher:_defaultType": "text/turtle"
             },
             {
               "@type": "StaticThrowHandler",
-              "error": { "@type": "UnsupportedMediaTypeHttpError" }
+              "StaticThrowHandler:_error": { "@type": "UnsupportedMediaTypeHttpError" }
             }
           ]
         }
@@ -35,7 +35,7 @@
       "comment": "Dedicated handlers that apply specific types of patch documents",
       "@id": "urn:solid-server:default:PatchHandler_RDF",
       "@type": "WaterfallHandler",
-      "handlers": [
+      "WaterfallHandler:_handlers": [
         { "@type": "N3Patcher" },
         { "@type": "SparqlUpdatePatcher" }
       ]

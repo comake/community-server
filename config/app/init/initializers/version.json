@@ -5,8 +5,8 @@
       "comment": "Logs a warning if the base URL changes.",
       "@id": "urn:solid-server:default:ModuleVersionVerifier",
       "@type": "ModuleVersionVerifier",
-      "storageKey": "current-server-version",
-      "storage": { "@id": "urn:solid-server:default:SetupStorage" }
+      "ModuleVersionVerifier:_storageKey": "current-server-version",
+      "ModuleVersionVerifier:_storage": { "@id": "urn:solid-server:default:SetupStorage" }
     }
   ]
 }

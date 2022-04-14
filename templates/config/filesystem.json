@@ -11,20 +11,14 @@
     {
       "@id": "urn:solid-server:template:FileIdentifierMapper",
       "@type": "ExtensionBasedMapper",
-      "base": {
-        "@id": "urn:solid-server:template:variable:baseUrl"
-      },
-      "rootFilepath": {
-        "@id": "urn:solid-server:template:variable:rootFilePath"
-      }
+      "ExtensionBasedMapper:_base": { "@id": "urn:solid-server:template:variable:baseUrl" },
+      "ExtensionBasedMapper:_rootFilepath": { "@id": "urn:solid-server:template:variable:rootFilePath" }
     },
 
     {
       "@id": "urn:solid-server:template:DataAccessor",
       "@type": "FileDataAccessor",
-      "resourceMapper": {
-        "@id": "urn:solid-server:template:FileIdentifierMapper"
-      }
+      "FileDataAccessor:_resourceMapper": { "@id": "urn:solid-server:template:FileIdentifierMapper" }
     },
 
     {

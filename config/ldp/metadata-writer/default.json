@@ -13,7 +13,7 @@
       "comment": "Adds metadata to the response based on the RDF metadata.",
       "@id": "urn:solid-server:default:MetadataWriter",
       "@type": "ParallelHandler",
-      "handlers": [
+      "ParallelHandler:_handlers": [
         { "@id": "urn:solid-server:default:MetadataWriter_Constant" },
         { "@id": "urn:solid-server:default:MetadataWriter_Mapped" },
         { "@id": "urn:solid-server:default:MetadataWriter_Modified" },

@@ -9,19 +9,19 @@
       "comment": "Uses Web Access Control for authorization.",
       "@id": "urn:solid-server:default:PermissionReader",
       "@type": "UnionPermissionReader",
-      "readers": [
+      "UnionPermissionReader:_readers": [
         {
           "comment": "This PermissionReader will be used to prevent external access to containers used for internal storage.",
           "@id": "urn:solid-server:default:PathBasedReader",
           "@type": "PathBasedReader",
-          "baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" }
+          "PathBasedReader:_baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" }
         },
         { "@id": "urn:solid-server:default:OwnerPermissionReader" },
         {
           "comment": "This PermissionReader makes sure that for auxiliary resources, the main reader gets called with the associated identifier.",
           "@type": "AuxiliaryReader",
-          "resourceReader": { "@id": "urn:solid-server:default:WebAclReader" },
-          "auxiliaryStrategy": { "@id": "urn:solid-server:default:AuxiliaryStrategy" }
+          "AuxiliaryReader:_resourceReader": { "@id": "urn:solid-server:default:WebAclReader" },
+          "AuxiliaryReader:_auxiliaryStrategy": { "@id": "urn:solid-server:default:AuxiliaryStrategy" }
         },
         { "@id": "urn:solid-server:default:WebAclReader" }
       ]
@@ -30,11 +30,11 @@
       "comment": "In case of WebACL authorization the ACL resources determine authorization.",
       "@id": "urn:solid-server:default:AuthResourceHttpHandler",
       "@type": "RouterHandler",
-      "args_baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
-      "args_targetExtractor": { "@id": "urn:solid-server:default:TargetExtractor" },
-      "args_allowedMethods": [ "*" ],
-      "args_allowedPathNames": [ "^/.*\\.acl$" ],
-      "args_handler": { "@id": "urn:solid-server:default:LdpHandler" }
+      "RouterHandler:_args_baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
+      "RouterHandler:_args_targetExtractor": { "@id": "urn:solid-server:default:TargetExtractor" },
+      "RouterHandler:_args_allowedMethods": [ "*" ],
+      "RouterHandler:_args_allowedPathNames": [ "^/.*\\.acl$" ],
+      "RouterHandler:_args_handler": { "@id": "urn:solid-server:default:LdpHandler" }
     }
   ]
 }

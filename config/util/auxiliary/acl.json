@@ -8,7 +8,7 @@
       "comment": "This will contain references to all the auxiliary strategies (such as the acl one) if they are needed.",
       "@id": "urn:solid-server:default:AuxiliaryStrategy",
       "@type": "RoutingAuxiliaryStrategy",
-      "sources": [
+      "RoutingAuxiliaryStrategy:_sources": [
         { "@id": "urn:solid-server:default:AclStrategy" }
       ]
     }

@@ -8,7 +8,7 @@
       ],
       "@id": "urn:solid-server:default:CredentialsExtractor",
       "@type": "UnionCredentialsExtractor",
-      "extractors": [
+      "UnionCredentialsExtractor:_extractors": [
         { "@type": "UnsecureWebIdExtractor" },
         { "@type": "PublicCredentialsExtractor" }
       ]

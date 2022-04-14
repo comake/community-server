@@ -5,18 +5,18 @@
       "comment": "Generates ResourceStores that correspond to new pods.",
       "@id": "urn:solid-server:default:PodGenerator",
       "@type": "TemplatedPodGenerator",
-      "storeFactory": { "@type": "BaseComponentsJsFactory" },
-      "variableHandler": {
+      "TemplatedPodGenerator:_storeFactory": { "@type": "BaseComponentsJsFactory" },
+      "TemplatedPodGenerator:_variableHandler": {
         "@type": "ParallelHandler",
-        "handlers": [
+        "ParallelHandler:_handlers": [
           { "@type": "BaseUrlHandler" },
           {
             "@type": "RootFilePathHandler",
-            "fileMapper": { "@id": "urn:solid-server:default:FileIdentifierMapper" }
+            "RootFilePathHandler:_fileMapper": { "@id": "urn:solid-server:default:FileIdentifierMapper" }
           }
         ]
       },
-      "configStorage": { "@id": "urn:solid-server:default:PodConfigurationStorage" }
+      "TemplatedPodGenerator:_configStorage": { "@id": "urn:solid-server:default:PodConfigurationStorage" }
     }
   ]
 }

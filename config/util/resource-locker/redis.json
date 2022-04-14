@@ -5,19 +5,19 @@
       "comment": "Allows multiple simultaneous read operations. Locks are stored in memory. Locks expire after inactivity.",
       "@id": "urn:solid-server:default:ResourceLocker",
       "@type": "WrappedExpiringReadWriteLocker",
-      "locker": {
+      "WrappedExpiringReadWriteLocker:_locker": {
         "@type": "GreedyReadWriteLocker",
-        "locker": {
+        "GreedyReadWriteLocker:_locker": {
           "@id": "urn:solid-server:default:RedisResourceLocker",
           "@type": "RedisResourceLocker",
-          "redisClients": [ "6379" ]
+          "RedisResourceLocker:_redisClients": [ "6379" ]
         },
-        "storage": { "@id": "urn:solid-server:default:LockStorage" },
-        "suffixes_count": "count",
-        "suffixes_read": "read",
-        "suffixes_write": "write"
+        "GreedyReadWriteLocker:_storage": { "@id": "urn:solid-server:default:LockStorage" },
+        "GreedyReadWriteLocker:_suffixes_count": "count",
+        "GreedyReadWriteLocker:_suffixes_read": "read",
+        "GreedyReadWriteLocker:_suffixes_write": "write"
       },
-      "expiration": 3000
+      "WrappedExpiringReadWriteLocker:_expiration": 3000
     },
     {
       "comment": "Makes sure the redis connection is closed when the application needs to stop.",

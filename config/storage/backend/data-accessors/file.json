@@ -5,7 +5,7 @@
       "comment": "Stores data on a file system.",
       "@id": "urn:solid-server:default:FileDataAccessor",
       "@type": "FileDataAccessor",
-      "resourceMapper": { "@id": "urn:solid-server:default:FileIdentifierMapper" }
+      "FileDataAccessor:_resourceMapper": { "@id": "urn:solid-server:default:FileIdentifierMapper" }
     }
   ]
 }

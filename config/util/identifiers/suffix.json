@@ -5,20 +5,20 @@
     {
       "@id": "urn:solid-server:default:IdentifierStrategy",
       "@type": "SingleRootIdentifierStrategy",
-      "baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" }
+      "SingleRootIdentifierStrategy:_baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" }
     },
     {
       "comment": "Only required when pod creation is enabled.",
       "@id": "urn:solid-server:default:IdentifierGenerator",
       "@type": "SuffixIdentifierGenerator",
-      "base": { "@id": "urn:solid-server:default:variable:baseUrl" }
+      "SuffixIdentifierGenerator:_base": { "@id": "urn:solid-server:default:variable:baseUrl" }
     },
     {
       "comment": "Only required when using a file-based backend.",
       "@id": "urn:solid-server:default:FileIdentifierMapper",
       "@type": "ExtensionBasedMapper",
-      "base": { "@id": "urn:solid-server:default:variable:baseUrl" },
-      "rootFilepath": { "@id": "urn:solid-server:default:variable:rootFilePath" }
+      "ExtensionBasedMapper:_base": { "@id": "urn:solid-server:default:variable:baseUrl" },
+      "ExtensionBasedMapper:_rootFilepath": { "@id": "urn:solid-server:default:variable:rootFilePath" }
     }
   ]
 }

@@ -6,8 +6,8 @@
       "comment": "Enforces quota globally for all data on the server",
       "@id": "urn:solid-server:default:QuotaStrategy",
       "@type": "GlobalQuotaStrategy",
-      "reporter": { "@id": "urn:solid-server:default:SizeReporter" },
-      "base": { "@id": "urn:solid-server:default:variable:baseUrl" }
+      "GlobalQuotaStrategy:_reporter": { "@id": "urn:solid-server:default:SizeReporter" },
+      "GlobalQuotaStrategy:_base": { "@id": "urn:solid-server:default:variable:baseUrl" }
     }
   ]
 }

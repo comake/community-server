@@ -8,7 +8,7 @@
       ],
       "@id": "urn:solid-server:default:PermissionReader",
       "@type": "AllStaticReader",
-      "allow": true
+      "AllStaticReader:_allow": true
     },
     {
       "comment": "Everything is allowed, so there are no auth-specific resources.",

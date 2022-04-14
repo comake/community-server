@@ -5,7 +5,7 @@
       "comment": "Adds the WWW-Authenticate header on 401 responses. The current auth value is required for the legacy solid-auth-client.",
       "@id": "urn:solid-server:default:MetadataWriter_WwwAuth",
       "@type": "WwwAuthMetadataWriter",
-      "auth": "Bearer scope=\"openid webid\""
+      "WwwAuthMetadataWriter:_auth": "Bearer scope=\"openid webid\""
     }
   ]
 }

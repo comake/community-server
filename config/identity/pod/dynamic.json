@@ -10,16 +10,16 @@
       "comment": "Generates pods based on config templates and stores the results in the correct places",
       "@id": "urn:solid-server:default:PodManager",
       "@type": "ConfigPodManager",
-      "podGenerator": { "@id": "urn:solid-server:default:PodGenerator" },
-      "routingStorage": { "@id": "urn:solid-server:default:PodRoutingStorage" },
-      "resourcesGenerator": { "@id": "urn:solid-server:default:ResourcesGenerator" }
+      "ConfigPodManager:_podGenerator": { "@id": "urn:solid-server:default:PodGenerator" },
+      "ConfigPodManager:_routingStorage": { "@id": "urn:solid-server:default:PodRoutingStorage" },
+      "ConfigPodManager:_resourcesGenerator": { "@id": "urn:solid-server:default:ResourcesGenerator" }
     },
 
     {
       "comment": "Router rule responsible for handling dynamic pod routing. Needs to be used by RoutingResourceStore.",
       "@id": "urn:solid-server:default:RouterRule",
       "@type": "BaseUrlRouterRule",
-      "stores": { "@id": "urn:solid-server:default:PodRoutingStorage" }
+      "BaseUrlRouterRule:_stores": { "@id": "urn:solid-server:default:PodRoutingStorage" }
     },
 
     {
@@ -29,9 +29,9 @@
         {
           "comment": "Initializer that instantiates all the dynamic pods.",
           "@type": "ConfigPodInitializer",
-          "storeFactory": { "@type": "BaseComponentsJsFactory" },
-          "configStorage": { "@id": "urn:solid-server:default:PodConfigurationStorage" },
-          "routingStorage": { "@id": "urn:solid-server:default:PodRoutingStorage" }
+          "ConfigPodInitializer:_storeFactory": { "@type": "BaseComponentsJsFactory" },
+          "ConfigPodInitializer:_configStorage": { "@id": "urn:solid-server:default:PodConfigurationStorage" },
+          "ConfigPodInitializer:_routingStorage": { "@id": "urn:solid-server:default:PodRoutingStorage" }
         }
       ]
     },
@@ -44,8 +44,8 @@
       "comment": "This is where the pod configurations will be stored.",
       "@id": "urn:solid-server:default:PodConfigurationStorage",
       "@type": "JsonFileStorage",
-      "filePath": { "@id": "urn:solid-server:default:variable:podConfigJson" },
-      "locker": { "@id": "urn:solid-server:default:ResourceLocker" }
+      "JsonFileStorage:_filePath": { "@id": "urn:solid-server:default:variable:podConfigJson" },
+      "JsonFileStorage:_locker": { "@id": "urn:solid-server:default:ResourceLocker" }
     },
 
     {

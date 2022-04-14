@@ -5,18 +5,23 @@
       "comment": "An example of how to set up a server with HTTPS",
       "@id": "urn:solid-server:default:ServerFactory",
       "@type": "WebSocketServerFactory",
-      "baseServerFactory": {
+      "WebSocketServerFactory:_baseServerFactory": {
         "@id": "urn:solid-server:default:HttpServerFactory",
         "@type": "BaseHttpServerFactory",
-        "handler": { "@id": "urn:solid-server:default:HttpHandler" },
-        "options_showStackTrace": { "@id": "urn:solid-server:default:variable:showStackTrace" },
-        "options_https": true,
-        "options_key": "/path/to/server.key",
-        "options_cert": "/path/to/server.cert"
+        "BaseHttpServerFactory:_handler": { "@id": "urn:solid-server:default:HttpHandler" },
+        "BaseHttpServerFactory:_options": {
+          "@type": "@json",
+          "@value": {
+            "showStackTrace": { "@id": "urn:solid-server:default:variable:showStackTrace" },
+            "https": true,
+            "key": "/path/to/server.key",
+            "cert": "/path/to/server.cert"
+          }
+        }
       },
-      "webSocketHandler": {
+      "WebSocketServerFactory:_webSocketHandler": {
         "@type": "UnsecureWebSocketsProtocol",
-        "source": { "@id": "urn:solid-server:default:ResourceStore" }
+        "UnsecureWebSocketsProtocol:_source": { "@id": "urn:solid-server:default:ResourceStore" }
       }
     }
   ]

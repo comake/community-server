@@ -35,7 +35,7 @@
       "comment": "A default setup with an unsecure authenticator and support for subdomains.",
       "@id": "urn:solid-server:test:Instances",
       "@type": "RecordObject",
-      "record": [
+      "RecordObject:_record": [
         {
           "RecordObject:_record_key": "app",
           "RecordObject:_record_value": { "@id": "urn:solid-server:default:App" }

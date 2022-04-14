@@ -5,7 +5,7 @@
       "comment": "Changes content-type without changing content. E.g., if application/json is requested, application/ld+json is also valid.",
       "@id": "urn:solid-server:default:ContentTypeReplacer",
       "@type": "ContentTypeReplacer",
-      "replacements": [
+      "ContentTypeReplacer:_replacements": [
         {
           "ContentTypeReplacer:_replacements_key": "application/n-triples",
           "ContentTypeReplacer:_replacements_value": "text/turtle"

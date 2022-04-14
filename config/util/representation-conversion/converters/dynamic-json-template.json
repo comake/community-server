@@ -5,11 +5,11 @@
       "comment": "Uses the JSON data as parameters for a template.",
       "@id": "urn:solid-server:default:DynamicJsonToTemplateConverter",
       "@type": "DynamicJsonToTemplateConverter",
-      "templateEngine": {
+      "DynamicJsonToTemplateConverter:_templateEngine": {
         "comment": "Renders the specific page and embeds it into the main HTML body.",
         "@type": "ChainedTemplateEngine",
-        "renderedName": "htmlBody",
-        "engines": [
+        "ChainedTemplateEngine:_renderedName": "htmlBody",
+        "ChainedTemplateEngine:_engines": [
           {
             "comment": "Will be called with specific templates to generate HTML snippets.",
             "@type": "EjsTemplateEngine"
@@ -17,7 +17,12 @@
           {
             "comment": "Will embed the result of the first engine into the main HTML template.",
             "@type": "EjsTemplateEngine",
-            "template": "@css:templates/main.html.ejs"
+            "EjsTemplateEngine:_template": {
+              "@type": "@json",
+              "@value": {
+                "templateFile": "@css:templates/main.html.ejs"
+              }
+            }
           }
         ]
       }

@@ -5,7 +5,7 @@
       "comment": "Uses the winston library for logging",
       "@id": "urn:solid-server:default:LoggerFactory",
       "@type": "WinstonLoggerFactory",
-      "level": { "@id": "urn:solid-server:default:variable:loggingLevel" }
+      "WinstonLoggerFactory:_level": { "@id": "urn:solid-server:default:variable:loggingLevel" }
     }
   ]
 }

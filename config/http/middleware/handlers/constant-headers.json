@@ -5,7 +5,7 @@
       "comment": "Adds several constant headers.",
       "@id": "urn:solid-server:default:Middleware_Header",
       "@type": "HeaderHandler",
-      "headers": [
+      "HeaderHandler:_headers": [
         {
           "HeaderHandler:_headers_key": "Vary",
           "HeaderHandler:_headers_value": "Accept,Authorization,Origin"

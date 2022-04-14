@@ -8,10 +8,10 @@
       ],
       "@id": "urn:solid-server:default:CredentialsExtractor",
       "@type": "UnionCredentialsExtractor",
-      "extractors": [
+      "UnionCredentialsExtractor:_extractors": [
         {
           "@type": "UnsecureConstantCredentialsExtractor",
-          "agent": "http://test.com/card#me"
+          "UnsecureConstantCredentialsExtractor:_agent": "http://test.com/card#me"
         },
         { "@type": "PublicCredentialsExtractor" }
       ]

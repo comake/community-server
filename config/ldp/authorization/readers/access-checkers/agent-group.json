@@ -5,10 +5,10 @@
       "comment": "Checks if the agent belongs to a group that has access.",
       "@id": "urn:solid-server:default:AgentGroupAccessChecker",
       "@type": "AgentGroupAccessChecker",
-      "cache": {
+      "AgentGroupAccessChecker:_cache": {
         "@id": "urn:solid-server:default:ExpiringAclCache",
         "@type": "WrappedExpiringStorage",
-        "source": { "@type": "MemoryMapStorage" }
+        "WrappedExpiringStorage:_source": { "@type": "MemoryMapStorage" }
       }
     },
     {

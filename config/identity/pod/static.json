@@ -8,8 +8,8 @@
       "comment": "Stores all new resources for a pod in the default resource store under the generated identifier.",
       "@id": "urn:solid-server:default:PodManager",
       "@type": "GeneratedPodManager",
-      "store": { "@id": "urn:solid-server:default:ResourceStore" },
-      "resourcesGenerator": { "@id": "urn:solid-server:default:ResourcesGenerator" }
+      "GeneratedPodManager:_store": { "@id": "urn:solid-server:default:ResourceStore" },
+      "GeneratedPodManager:_resourcesGenerator": { "@id": "urn:solid-server:default:ResourcesGenerator" }
     }
   ]
 }

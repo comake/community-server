@@ -5,21 +5,21 @@
     {
       "@id": "urn:solid-server:default:IdentifierStrategy",
       "@type": "SubdomainIdentifierStrategy",
-      "baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" }
+      "SubdomainIdentifierStrategy:_baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" }
     },
     {
       "comment": "Only required when pod creation is enabled.",
       "@id": "urn:solid-server:default:IdentifierGenerator",
       "@type": "SubdomainIdentifierGenerator",
-      "baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" }
+      "SubdomainIdentifierGenerator:_baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" }
     },
     {
       "comment": "Only required when using a file-based backend.",
       "@id": "urn:solid-server:default:FileIdentifierMapper",
       "@type": "SubdomainExtensionBasedMapper",
-      "base": { "@id": "urn:solid-server:default:variable:baseUrl" },
-      "rootFilepath": { "@id": "urn:solid-server:default:variable:rootFilePath" },
-      "baseSubdomain": "www"
+      "SubdomainExtensionBasedMapper:_base": { "@id": "urn:solid-server:default:variable:baseUrl" },
+      "SubdomainExtensionBasedMapper:_rootFilepath": { "@id": "urn:solid-server:default:variable:rootFilePath" },
+      "SubdomainExtensionBasedMapper:_baseSubdomain": "www"
     }
   ]
 }

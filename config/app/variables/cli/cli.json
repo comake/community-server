@@ -1,10 +1,19 @@
 {
-  "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^3.0.0/components/context.jsonld",
+  "@context": [
+    "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^3.0.0/components/context.jsonld",
+    { "parameters": { "@id": "YargsCliExtractor:_parameters", "@type": "@json" } }
+  ],
   "@graph": [
     {
       "comment": "Extracts CLI arguments into a key/value object. Config and mainModulePath are only defined here so their description is returned.",
       "@id": "urn:solid-server-app-setup:default:CliExtractor",
       "@type": "YargsCliExtractor",
+      "YargsCliExtractor:_options": {
+        "@type": "@json",
+        "@value": {
+          "usage": "node ./bin/server.js [args]"
+        }
+      },
       "parameters": {
         "config": {
           "alias": "c",
@@ -63,9 +72,6 @@
           "type": "string",
           "describe": "Path to the file that will be used to seed pods."
         }
-      },
-      "options": {
-        "usage": "node ./bin/server.js [args]"
       }
     }
   ]

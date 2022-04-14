@@ -36,7 +36,7 @@
       "comment": "Main changes from default are the dynamic pods and the unsafe authorizer.",
       "@id": "urn:solid-server:test:Instances",
       "@type": "RecordObject",
-      "record": [
+      "RecordObject:_record": [
         {
           "RecordObject:_record_key": "app",
           "RecordObject:_record_value": { "@id": "urn:solid-server:default:App" }

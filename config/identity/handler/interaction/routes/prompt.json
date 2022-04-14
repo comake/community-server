@@ -5,16 +5,16 @@
       "comment": "Handles OIDC redirects containing a prompt, such as login or consent.",
       "@id": "urn:solid-server:auth:password:PromptRouteHandler",
       "@type": "InteractionRouteHandler",
-      "route": {
+      "InteractionRouteHandler:_route": {
         "@id": "urn:solid-server:auth:password:PromptRoute",
         "@type": "RelativePathInteractionRoute",
-        "base": { "@id": "urn:solid-server:auth:password:IndexRoute" },
-        "relativePath": "/prompt/"
+        "RelativePathInteractionRoute:_base": { "@id": "urn:solid-server:auth:password:IndexRoute" },
+        "RelativePathInteractionRoute:_relativePath": "/prompt/"
       },
-      "source": {
+      "InteractionRouteHandler:_source": {
         "@type": "PromptHandler",
         "@id": "urn:solid-server:auth:password:PromptHandler",
-        "promptRoutes": [
+        "PromptHandler:_promptRoutes": [
           {
             "PromptHandler:_promptRoutes_key": "login",
             "PromptHandler:_promptRoutes_value": { "@id": "urn:solid-server:auth:password:LoginRoute" }

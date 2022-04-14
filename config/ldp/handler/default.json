@@ -13,17 +13,17 @@
       "comment": "The main entry point into the main Solid behaviour.",
       "@id": "urn:solid-server:default:LdpHandler",
       "@type": "ParsingHttpHandler",
-      "args_requestParser": { "@id": "urn:solid-server:default:RequestParser" },
-      "args_metadataCollector": { "@id": "urn:solid-server:default:OperationMetadataCollector" },
-      "args_errorHandler": { "@id": "urn:solid-server:default:ErrorHandler" },
-      "args_responseWriter": { "@id": "urn:solid-server:default:ResponseWriter" },
-      "args_operationHandler": {
+      "ParsingHttpHandler:_args_requestParser": { "@id": "urn:solid-server:default:RequestParser" },
+      "ParsingHttpHandler:_args_metadataCollector": { "@id": "urn:solid-server:default:OperationMetadataCollector" },
+      "ParsingHttpHandler:_args_errorHandler": { "@id": "urn:solid-server:default:ErrorHandler" },
+      "ParsingHttpHandler:_args_responseWriter": { "@id": "urn:solid-server:default:ResponseWriter" },
+      "ParsingHttpHandler:_args_operationHandler": {
         "@type": "AuthorizingHttpHandler",
-        "args_credentialsExtractor": { "@id": "urn:solid-server:default:CredentialsExtractor" },
-        "args_modesExtractor": { "@id": "urn:solid-server:default:ModesExtractor" },
-        "args_permissionReader": { "@id": "urn:solid-server:default:PermissionReader" },
-        "args_authorizer": { "@id": "urn:solid-server:default:Authorizer" },
-        "args_operationHandler": { "@id": "urn:solid-server:default:OperationHandler" }
+        "AuthorizingHttpHandler:_args_credentialsExtractor": { "@id": "urn:solid-server:default:CredentialsExtractor" },
+        "AuthorizingHttpHandler:_args_modesExtractor": { "@id": "urn:solid-server:default:ModesExtractor" },
+        "AuthorizingHttpHandler:_args_permissionReader": { "@id": "urn:solid-server:default:PermissionReader" },
+        "AuthorizingHttpHandler:_args_authorizer": { "@id": "urn:solid-server:default:Authorizer" },
+        "AuthorizingHttpHandler:_args_operationHandler": { "@id": "urn:solid-server:default:OperationHandler" }
       }
     }
   ]

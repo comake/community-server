@@ -5,11 +5,11 @@
       "comment": "Generates resources based on the templates stored in the template folder.",
       "@id": "urn:solid-server:default:ResourcesGenerator",
       "@type": "TemplatedResourcesGenerator",
-      "templateFolder": "@css:templates/pod",
-      "factory": {
+      "TemplatedResourcesGenerator:_templateFolder": "@css:templates/pod",
+      "TemplatedResourcesGenerator:_factory": {
         "@type": "ExtensionBasedMapperFactory"
       },
-      "templateEngine": {
+      "TemplatedResourcesGenerator:_templateEngine": {
         "@type": "HandlebarsTemplateEngine"
       }
     }

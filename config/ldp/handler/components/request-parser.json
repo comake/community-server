@@ -5,17 +5,17 @@
       "comment": "Handles everything related to parsing a Request.",
       "@id": "urn:solid-server:default:RequestParser",
       "@type": "BasicRequestParser",
-      "args_targetExtractor": {
+      "BasicRequestParser:_args_targetExtractor": {
         "@id": "urn:solid-server:default:TargetExtractor",
         "@type": "OriginalUrlExtractor",
-        "options_includeQueryString": false
+        "OriginalUrlExtractor:_options_includeQueryString": false
       },
-      "args_preferenceParser": { "@type": "AcceptPreferenceParser" },
-      "args_metadataParser": { "@id": "urn:solid-server:default:MetadataParser" },
-      "args_conditionsParser": { "@type": "BasicConditionsParser" },
-      "args_bodyParser": {
+      "BasicRequestParser:_args_preferenceParser": { "@type": "AcceptPreferenceParser" },
+      "BasicRequestParser:_args_metadataParser": { "@id": "urn:solid-server:default:MetadataParser" },
+      "BasicRequestParser:_args_conditionsParser": { "@type": "BasicConditionsParser" },
+      "BasicRequestParser:_args_bodyParser": {
         "@type": "WaterfallHandler",
-        "handlers": [
+        "WaterfallHandler:_handlers": [
           { "@id": "urn:solid-server:default:PatchBodyParser" },
           { "@type": "RawBodyParser" }
         ]
@@ -25,10 +25,10 @@
       "comment": "Handles body parsing for PATCH requests. Those requests need to generate an interpreted Patch body.",
       "@id": "urn:solid-server:default:PatchBodyParser",
       "@type": "MethodFilterHandler",
-      "methods": [ "PATCH" ],
-      "source": {
+      "MethodFilterHandler:_methods": [ "PATCH" ],
+      "MethodFilterHandler:_source": {
         "@type": "WaterfallHandler",
-        "handlers": [
+        "WaterfallHandler:_handlers": [
           { "@type": "N3PatchBodyParser" },
           { "@type": "SparqlUpdateBodyParser" }
         ]

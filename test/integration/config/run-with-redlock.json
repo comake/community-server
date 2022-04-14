@@ -33,7 +33,7 @@
       "comment": "A default setup with a Redis locker and an unsecure authorizer.",
       "@id": "urn:solid-server:test:Instances",
       "@type": "RecordObject",
-      "record": [
+      "RecordObject:_record": [
         {
           "RecordObject:_record_key": "app",
           "RecordObject:_record_value": { "@id": "urn:solid-server:default:App" }

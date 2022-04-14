@@ -9,7 +9,7 @@
       "comment": "All of these will always be executed on any incoming request. These are mostly used for adding response headers.",
       "@id": "urn:solid-server:default:Middleware",
       "@type": "SequenceHandler",
-      "handlers": [
+      "SequenceHandler:_handlers": [
         { "@id": "urn:solid-server:default:Middleware_Header" },
         { "@id": "urn:solid-server:default:Middleware_Cors" }
       ]
