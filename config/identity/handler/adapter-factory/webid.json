@@ -1,15 +1,23 @@
 {
-  "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^3.0.0/components/context.jsonld",
+  "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^4.0.0/components/context.jsonld",
   "@graph": [
     {
       "comment": "An adapter is responsible for storing all interaction metadata.",
       "@id": "urn:solid-server:default:IdpAdapterFactory",
-      "@type": "WebIdAdapterFactory",
-      "WebIdAdapterFactory:_source": {
-        "@type": "ExpiringAdapterFactory",
-        "ExpiringAdapterFactory:_storage": { "@id": "urn:solid-server:default:IdpAdapterStorage" }
-      },
-      "WebIdAdapterFactory:_converter": { "@id": "urn:solid-server:default:RepresentationConverter" }
+      "@type": "ClientCredentialsAdapterFactory",
+      "ClientCredentialsAdapterFactory:_storage": { "@id": "urn:solid-server:auth:password:CredentialsStorage" },
+      "ClientCredentialsAdapterFactory:_source": {
+        "@type": "WebIdAdapterFactory",
+        "WebIdAdapterFactory:_converter": {"@id": "urn:solid-server:default:RepresentationConverter" },
+        "WebIdAdapterFactory:_source": {
+          "@type": "ExpiringAdapterFactory",
+          "ExpiringAdapterFactory:_storage": {
+            "@type": "EncodingPathStorage",
+            "EncodingPathStorage:_relativePath": "/idp/adapter/",
+            "EncodingPathStorage:_source": { "@id": "urn:solid-server:default:KeyValueStorage" }
+          }
+        }
+      }
     }
   ]
 }

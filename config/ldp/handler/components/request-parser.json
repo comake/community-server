@@ -1,5 +1,5 @@
 {
-  "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^3.0.0/components/context.jsonld",
+  "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^4.0.0/components/context.jsonld",
   "@graph": [
     {
       "comment": "Handles everything related to parsing a Request.",
@@ -8,7 +8,8 @@
       "BasicRequestParser:_args_targetExtractor": {
         "@id": "urn:solid-server:default:TargetExtractor",
         "@type": "OriginalUrlExtractor",
-        "OriginalUrlExtractor:_options_includeQueryString": false
+        "OriginalUrlExtractor:_args_identifierStrategy": { "@id": "urn:solid-server:default:IdentifierStrategy" },
+        "OriginalUrlExtractor:_args_includeQueryString": false
       },
       "BasicRequestParser:_args_preferenceParser": { "@type": "AcceptPreferenceParser" },
       "BasicRequestParser:_args_metadataParser": { "@id": "urn:solid-server:default:MetadataParser" },

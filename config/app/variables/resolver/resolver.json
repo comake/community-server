@@ -1,67 +1,67 @@
 {
-  "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^3.0.0/components/context.jsonld",
+  "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^4.0.0/components/context.jsonld",
   "@graph": [
     {
       "comment": "Converts an input key/value object into an object mapping values to Components.js variables",
       "@id": "urn:solid-server-app-setup:default:SettingsResolver",
       "@type": "CombinedSettingsResolver",
-      "CombinedSettingsResolver:_computers": [
+      "CombinedSettingsResolver:_resolvers": [
         {
-          "CombinedSettingsResolver:_computers_key": "urn:solid-server:default:variable:baseUrl",
-          "CombinedSettingsResolver:_computers_value": {
+          "CombinedSettingsResolver:_resolvers_key": "urn:solid-server:default:variable:baseUrl",
+          "CombinedSettingsResolver:_resolvers_value": {
             "@type": "BaseUrlExtractor"
           }
         },
         {
-          "CombinedSettingsResolver:_computers_key": "urn:solid-server:default:variable:loggingLevel",
-          "CombinedSettingsResolver:_computers_value": {
+          "CombinedSettingsResolver:_resolvers_key": "urn:solid-server:default:variable:loggingLevel",
+          "CombinedSettingsResolver:_resolvers_value": {
             "@type": "KeyExtractor",
             "KeyExtractor:_key": "loggingLevel",
             "KeyExtractor:_defaultValue": "info"
           }
         },
         {
-          "CombinedSettingsResolver:_computers_key": "urn:solid-server:default:variable:port",
-          "CombinedSettingsResolver:_computers_value": {
+          "CombinedSettingsResolver:_resolvers_key": "urn:solid-server:default:variable:port",
+          "CombinedSettingsResolver:_resolvers_value": {
             "@type": "KeyExtractor",
             "KeyExtractor:_key": "port",
             "KeyExtractor:_defaultValue": 3000
           }
         },
         {
-          "CombinedSettingsResolver:_computers_key": "urn:solid-server:default:variable:rootFilePath",
-          "CombinedSettingsResolver:_computers_value": {
+          "CombinedSettingsResolver:_resolvers_key": "urn:solid-server:default:variable:rootFilePath",
+          "CombinedSettingsResolver:_resolvers_value": {
             "@type": "AssetPathExtractor",
             "AssetPathExtractor:_key": "rootFilePath",
             "AssetPathExtractor:_defaultPath": "./"
           }
         },
         {
-          "CombinedSettingsResolver:_computers_key": "urn:solid-server:default:variable:sparqlEndpoint",
-          "CombinedSettingsResolver:_computers_value": {
+          "CombinedSettingsResolver:_resolvers_key": "urn:solid-server:default:variable:sparqlEndpoint",
+          "CombinedSettingsResolver:_resolvers_value": {
             "@type": "KeyExtractor",
             "KeyExtractor:_key": "sparqlEndpoint"
           }
         },
         {
-          "CombinedSettingsResolver:_computers_key": "urn:solid-server:default:variable:showStackTrace",
-          "CombinedSettingsResolver:_computers_value": {
+          "CombinedSettingsResolver:_resolvers_key": "urn:solid-server:default:variable:showStackTrace",
+          "CombinedSettingsResolver:_resolvers_value": {
             "@type": "KeyExtractor",
             "KeyExtractor:_key": "showStackTrace",
             "KeyExtractor:_defaultValue": false
           }
         },
         {
-          "CombinedSettingsResolver:_computers_key": "urn:solid-server:default:variable:podConfigJson",
-          "CombinedSettingsResolver:_computers_value": {
+          "CombinedSettingsResolver:_resolvers_key": "urn:solid-server:default:variable:podConfigJson",
+          "CombinedSettingsResolver:_resolvers_value": {
             "@type": "AssetPathExtractor",
             "AssetPathExtractor:_key": "podConfigJson",
             "AssetPathExtractor:_defaultPath": "./pod-config.json"
           }
         },
         {
-          "CombinedSettingsResolver:_computers_key": "urn:solid-server:default:variable:seededPodConfigJson",
-          "CombinedSettingsResolver:_computers_value": {
+          "CombinedSettingsResolver:_resolvers_key": "urn:solid-server:default:variable:seededPodConfigJson",
+          "CombinedSettingsResolver:_resolvers_value": {
             "@type": "AssetPathExtractor",
             "AssetPathExtractor:_key": "seededPodConfigJson"
           }

@@ -94,6 +94,12 @@ export const HTTP = createUriAndTermNamespace('http://www.w3.org/2011/http#',
   'statusCodeNumber',
 );
 
+export const IANA = createUriAndTermNamespace('http://www.w3.org/ns/iana/media-types/');
+
+export const JSON_LD = createUriAndTermNamespace('http://www.w3.org/ns/json-ld#',
+  'context',
+);
+
 export const LDP = createUriAndTermNamespace('http://www.w3.org/ns/ldp#',
   'contains',
 
@@ -139,6 +145,8 @@ export const SOLID = createUriAndTermNamespace('http://www.w3.org/ns/solid/terms
 );
 
 export const SOLID_ERROR = createUriAndTermNamespace('urn:npm:solid:community-server:error:',
+  'disallowedMethod',
+  'errorResponse',
   'stack',
 );
 

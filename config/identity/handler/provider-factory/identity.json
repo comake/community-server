@@ -1,6 +1,6 @@
 {
   "@context": [
-    "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^3.0.0/components/context.jsonld",
+    "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^4.0.0/components/context.jsonld",
     { "config": { "@id": "IdentityProviderFactory:_config", "@type": "@json" } }
   ],
   "@graph": [
@@ -15,7 +15,12 @@
       "IdentityProviderFactory:_args_baseUrl": { "@id": "urn:solid-server:default:variable:baseUrl" },
       "IdentityProviderFactory:_args_oidcPath": "/.oidc",
       "IdentityProviderFactory:_args_interactionHandler": { "@id": "urn:solid-server:auth:password:PromptHandler" },
-      "IdentityProviderFactory:_args_storage": { "@id": "urn:solid-server:default:IdpKeyStorage" },
+      "IdentityProviderFactory:_args_credentialStorage": { "@id": "urn:solid-server:auth:password:CredentialsStorage" },
+      "IdentityProviderFactory:_args_storage": {
+        "@type": "EncodingPathStorage",
+        "EncodingPathStorage:_relativePath": "/idp/keys/",
+        "EncodingPathStorage:_source": { "@id": "urn:solid-server:default:KeyValueStorage" }
+      },
       "IdentityProviderFactory:_args_errorHandler": { "@id": "urn:solid-server:default:ErrorHandler" },
       "IdentityProviderFactory:_args_responseWriter": { "@id": "urn:solid-server:default:ResponseWriter" },
       "config": {
@@ -32,6 +37,7 @@
         },
         "features": {
           "claimsParameter": { "enabled": true },
+          "clientCredentials": { "enabled": true },
           "devInteractions": { "enabled": false },
           "dPoP": { "enabled": true, "ack": "draft-03" },
           "introspection": { "enabled": true },
@@ -45,6 +51,7 @@
           "AccessToken": 3600,
           "AuthorizationCode": 600,
           "BackchannelAuthenticationRequest": 600,
+          "ClientCredentials": 600,
           "DeviceCode": 600,
           "Grant": 1209600,
           "IdToken": 3600,

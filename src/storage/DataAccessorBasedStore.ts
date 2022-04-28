@@ -29,7 +29,6 @@ import {
 import { parseQuads } from '../util/QuadUtil';
 import { addResourceMetadata, updateModifiedDate } from '../util/ResourceUtil';
 import {
-  CONTENT_TYPE,
   DC,
   SOLID_HTTP,
   LDP,
@@ -39,6 +38,7 @@ import {
   XSD,
   SOLID_META,
   PREFERRED_PREFIX_TERM,
+  CONTENT_TYPE_TERM,
 } from '../util/Vocabularies';
 import type { DataAccessor } from './accessors/DataAccessor';
 import type { Conditions } from './Conditions';
@@ -81,7 +81,7 @@ export class DataAccessorBasedStore implements ResourceStore {
     this.auxiliaryStrategy = auxiliaryStrategy;
   }
 
-  public async resourceExists(identifier: ResourceIdentifier): Promise<boolean> {
+  public async hasResource(identifier: ResourceIdentifier): Promise<boolean> {
     try {
       this.validateIdentifier(identifier);
       await this.accessor.getMetadata(identifier);
@@ -155,7 +155,7 @@ export class DataAccessorBasedStore implements ResourceStore {
     // that are not supported by the target resource."
     // https://solid.github.io/specification/protocol#reading-writing-resources
     if (!isContainerPath(parentMetadata.identifier.value)) {
-      throw new MethodNotAllowedHttpError('The given path is not a container.');
+      throw new MethodNotAllowedHttpError([ 'POST' ], 'The given path is not a container.');
     }
 
     this.validateConditions(conditions, parentMetadata);
@@ -240,14 +240,15 @@ export class DataAccessorBasedStore implements ResourceStore {
     // the server MUST respond with the 405 status code."
     // https://solid.github.io/specification/protocol#deleting-resources
     if (this.isRootStorage(metadata)) {
-      throw new MethodNotAllowedHttpError('Cannot delete a root storage container.');
+      throw new MethodNotAllowedHttpError([ 'DELETE' ], 'Cannot delete a root storage container.');
     }
     if (this.auxiliaryStrategy.isAuxiliaryIdentifier(identifier) &&
       this.auxiliaryStrategy.isRequiredInRoot(identifier)) {
       const subjectIdentifier = this.auxiliaryStrategy.getSubjectIdentifier(identifier);
       const parentMetadata = await this.accessor.getMetadata(subjectIdentifier);
       if (this.isRootStorage(parentMetadata)) {
-        throw new MethodNotAllowedHttpError(`Cannot delete ${identifier.path} from a root storage container.`);
+        throw new MethodNotAllowedHttpError([ 'DELETE' ],
+          `Cannot delete ${identifier.path} from a root storage container.`);
       }
     }
 
@@ -434,7 +435,7 @@ export class DataAccessorBasedStore implements ResourceStore {
     }
 
     // Input content type doesn't matter anymore
-    representation.metadata.removeAll(CONTENT_TYPE);
+    representation.metadata.removeAll(CONTENT_TYPE_TERM);
 
     // Container data is stored in the metadata
     representation.metadata.addQuads(quads);
@@ -515,8 +516,8 @@ export class DataAccessorBasedStore implements ResourceStore {
   Promise<ResourceIdentifier> {
     // Get all values needed for naming the resource
     const isContainer = this.isContainerType(metadata);
-    const slug = metadata.get(SOLID_HTTP.slug)?.value;
-    metadata.removeAll(SOLID_HTTP.slug);
+    const slug = metadata.get(SOLID_HTTP.terms.slug)?.value;
+    metadata.removeAll(SOLID_HTTP.terms.slug);
 
     let newID: ResourceIdentifier = this.createURI(container, isContainer, slug);
 
@@ -530,7 +531,7 @@ export class DataAccessorBasedStore implements ResourceStore {
     // Make sure we don't already have a resource with this exact name (or with differing trailing slash)
     const withSlash = { path: ensureTrailingSlash(newID.path) };
     const withoutSlash = { path: trimTrailingSlashes(newID.path) };
-    if (await this.resourceExists(withSlash) || await this.resourceExists(withoutSlash)) {
+    if (await this.hasResource(withSlash) || await this.hasResource(withoutSlash)) {
       newID = this.createURI(container, isContainer);
     }
 
@@ -543,7 +544,7 @@ export class DataAccessorBasedStore implements ResourceStore {
    * @param metadata - Metadata of the (new) resource.
    */
   protected isContainerType(metadata: RepresentationMetadata): boolean {
-    return this.hasContainerType(metadata.getAll(RDF.type));
+    return this.hasContainerType(metadata.getAll(RDF.terms.type));
   }
 
   /**
@@ -557,7 +558,7 @@ export class DataAccessorBasedStore implements ResourceStore {
    * Verifies if this is the metadata of a root storage container.
    */
   protected isRootStorage(metadata: RepresentationMetadata): boolean {
-    return metadata.getAll(RDF.type).some((term): boolean => term.value === PIM.Storage);
+    return metadata.getAll(RDF.terms.type).some((term): boolean => term.value === PIM.Storage);
   }
 
   /**

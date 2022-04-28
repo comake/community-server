@@ -1,19 +1,29 @@
 {
-  "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^3.0.0/components/context.jsonld",
+  "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^4.0.0/components/context.jsonld",
   "@graph": [
     {
       "comment": "The storage adapter that persists usernames, passwords, etc.",
       "@id": "urn:solid-server:auth:password:AccountStore",
       "@type": "BaseAccountStore",
       "BaseAccountStore:_saltRounds": 10,
-      "BaseAccountStore:_storage": { "@id": "urn:solid-server:default:AccountStorage" },
-      "BaseAccountStore:_forgotPasswordStorage": { "@id": "urn:solid-server:default:ExpiringForgotPasswordStorage" }
+      "BaseAccountStore:_storage": {
+        "@type": "EncodingPathStorage",
+        "EncodingPathStorage:_relativePath": "/accounts/",
+        "EncodingPathStorage:_source": { "@id": "urn:solid-server:default:KeyValueStorage" }
+      },
+      "BaseAccountStore:_forgotPasswordStorage": {
+        "@id": "urn:solid-server:default:ExpiringForgotPasswordStorage"
+      }
     },
     {
       "comment": "Stores expiring data. This class has a `finalize` function that needs to be called after stopping the server.",
       "@id": "urn:solid-server:default:ExpiringForgotPasswordStorage",
       "@type": "WrappedExpiringStorage",
-      "WrappedExpiringStorage:_source": { "@id": "urn:solid-server:default:ForgotPasswordStorage" }
+      "WrappedExpiringStorage:_source": {
+        "@type": "EncodingPathStorage",
+        "EncodingPathStorage:_relativePath": "/forgot-password/",
+        "EncodingPathStorage:_source": { "@id": "urn:solid-server:default:KeyValueStorage" }
+      }
     },
     {
       "comment": "Makes sure the expiring storage cleanup timer is stopped when the application needs to stop.",

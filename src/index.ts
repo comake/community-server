@@ -63,6 +63,7 @@ export * from './http/input/metadata/ContentLengthParser';
 export * from './http/input/metadata/ContentTypeParser';
 export * from './http/input/metadata/LinkRelParser';
 export * from './http/input/metadata/MetadataParser';
+export * from './http/input/metadata/PlainJsonLdFilter';
 export * from './http/input/metadata/SlugParser';
 
 // HTTP/Input/Preferences
@@ -93,6 +94,7 @@ export * from './http/output/error/RedirectingErrorHandler';
 export * from './http/output/error/SafeErrorHandler';
 
 // HTTP/Output/Metadata
+export * from './http/output/metadata/AllowAcceptHeaderWriter';
 export * from './http/output/metadata/ConstantMetadataWriter';
 export * from './http/output/metadata/LinkRelMetadataWriter';
 export * from './http/output/metadata/MappedMetadataWriter';
@@ -127,6 +129,14 @@ export * from './http/UnsecureWebSocketsProtocol';
 // Identity/Configuration
 export * from './identity/configuration/IdentityProviderFactory';
 export * from './identity/configuration/ProviderFactory';
+
+// Identity/Interaction/Email-Password/Credentials
+export * from './identity/interaction/email-password/credentials/ClientCredentialsAdapterFactory';
+export * from './identity/interaction/email-password/credentials/EmailPasswordAuthorizer';
+export * from './identity/interaction/email-password/credentials/CreateCredentialsHandler';
+export * from './identity/interaction/email-password/credentials/CredentialsHandler';
+export * from './identity/interaction/email-password/credentials/DeleteCredentialsHandler';
+export * from './identity/interaction/email-password/credentials/ListCredentialsHandler';
 
 // Identity/Interaction/Email-Password/Handler
 export * from './identity/interaction/email-password/handler/ForgotPasswordHandler';
@@ -170,6 +180,7 @@ export * from './identity/ownership/TokenOwnershipValidator';
 // Identity/Storage
 export * from './identity/storage/AdapterFactory';
 export * from './identity/storage/ExpiringAdapterFactory';
+export * from './identity/storage/PassthroughAdapterFactory';
 export * from './identity/storage/WebIdAdapterFactory';
 
 // Identity
@@ -212,7 +223,6 @@ export * from './init/ServerInitializer';
 export * from './init/ModuleVersionVerifier';
 
 // Logging
-export * from './logging/LazyLogger';
 export * from './logging/LazyLoggerFactory';
 export * from './logging/Logger';
 export * from './logging/LoggerFactory';
@@ -259,6 +269,7 @@ export * from './server/HttpResponse';
 export * from './server/HttpServerFactory';
 export * from './server/OperationHttpHandler';
 export * from './server/ParsingHttpHandler';
+export * from './server/RedirectingHttpHandler';
 export * from './server/WebSocketHandler';
 export * from './server/WebSocketServerFactory';
 
@@ -302,6 +313,7 @@ export * from './storage/conversion/RepresentationConverter';
 export * from './storage/conversion/TypedRepresentationConverter';
 
 // Storage/KeyValue
+export * from './storage/keyvalue/EncodingPathStorage';
 export * from './storage/keyvalue/ExpiringStorage';
 export * from './storage/keyvalue/JsonFileStorage';
 export * from './storage/keyvalue/JsonResourceStorage';
@@ -349,6 +361,7 @@ export * from './storage/validators/QuotaValidator';
 export * from './storage/AtomicResourceStore';
 export * from './storage/BaseResourceStore';
 export * from './storage/BasicConditions';
+export * from './storage/CachedResourceSet';
 export * from './storage/Conditions';
 export * from './storage/DataAccessorBasedStore';
 export * from './storage/IndexRepresentationStore';
@@ -358,6 +371,7 @@ export * from './storage/PassthroughStore';
 export * from './storage/PatchingStore';
 export * from './storage/ReadOnlyStore';
 export * from './storage/RepresentationConvertingStore';
+export * from './storage/ResourceSet';
 export * from './storage/ResourceStore';
 export * from './storage/RoutingResourceStore';
 
@@ -405,7 +419,7 @@ export * from './util/locking/ExpiringReadWriteLocker';
 export * from './util/locking/EqualReadWriteLocker';
 export * from './util/locking/GreedyReadWriteLocker';
 export * from './util/locking/ReadWriteLocker';
-export * from './util/locking/RedisResourceLocker';
+export * from './util/locking/RedisLocker';
 export * from './util/locking/ResourceLocker';
 export * from './util/locking/SingleThreadedResourceLocker';
 export * from './util/locking/WrappedExpiringReadWriteLocker';
@@ -428,5 +442,7 @@ export * from './util/QuadUtil';
 export * from './util/RecordObject';
 export * from './util/ResourceUtil';
 export * from './util/StreamUtil';
+export * from './util/StringUtil';
 export * from './util/TermUtil';
+export * from './util/TimerUtil';
 export * from './util/Vocabularies';

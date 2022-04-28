@@ -1,5 +1,5 @@
 {
-  "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^3.0.0/components/context.jsonld",
+  "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/^4.0.0/components/context.jsonld",
   "@graph": [
     {
       "comment": "Adds all the necessary CORS headers.",
@@ -15,8 +15,12 @@
         "DELETE"
       ],
       "CorsHandler:_options_credentials": true,
+      "CorsHandler:_options_preflightContinue": false,
       "CorsHandler:_options_exposedHeaders": [
         "Accept-Patch",
+        "Accept-Post",
+        "Accept-Put",
+        "Allow",
         "ETag",
         "Last-Modified",
         "Link",
